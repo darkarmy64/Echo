@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A30047591BE27D9D00EE0A85 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30047581BE27D9D00EE0A85 /* SearchViewController.m */; settings = {ASSET_TAGS = (); }; };
+		A300475D1BE286D600EE0A85 /* RdioTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = A300475C1BE286D600EE0A85 /* RdioTrack.m */; settings = {ASSET_TAGS = (); }; };
 		A3B426E51BE12BFC00102950 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B426E41BE12BFC00102950 /* main.m */; };
 		A3B426E81BE12BFC00102950 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B426E71BE12BFC00102950 /* AppDelegate.m */; };
 		A3B426EB1BE12BFC00102950 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B426EA1BE12BFC00102950 /* ViewController.m */; };
@@ -15,6 +17,42 @@
 		A3B426F31BE12BFC00102950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3B426F11BE12BFC00102950 /* LaunchScreen.storyboard */; };
 		A3B426FE1BE12BFC00102950 /* DUCEPROTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B426FD1BE12BFC00102950 /* DUCEPROTests.m */; };
 		A3B427091BE12BFC00102950 /* DUCEPROUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B427081BE12BFC00102950 /* DUCEPROUITests.m */; };
+		A3B427181BE131C600102950 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B427171BE131C600102950 /* AudioToolbox.framework */; };
+		A3B4271A1BE131CF00102950 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B427191BE131CF00102950 /* CFNetwork.framework */; };
+		A3B4271C1BE131D400102950 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4271B1BE131D400102950 /* CoreGraphics.framework */; };
+		A3B4271E1BE131DB00102950 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4271D1BE131DB00102950 /* CoreMedia.framework */; };
+		A3B427201BE131E100102950 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4271F1BE131E100102950 /* Security.framework */; };
+		A3B427221BE131E900102950 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B427211BE131E900102950 /* SystemConfiguration.framework */; };
+		A3B4272E1BE1331C00102950 /* AFHTTPRequestSerializer+OAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4272B1BE1331C00102950 /* AFHTTPRequestSerializer+OAuth2.m */; settings = {ASSET_TAGS = (); }; };
+		A3B4272F1BE1331C00102950 /* AFOAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4272D1BE1331C00102950 /* AFOAuth2Manager.m */; settings = {ASSET_TAGS = (); }; };
+		A3B427441BE1337E00102950 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B427321BE1337E00102950 /* AFHTTPRequestOperation.m */; settings = {ASSET_TAGS = (); }; };
+		A3B427451BE1337E00102950 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B427341BE1337E00102950 /* AFHTTPRequestOperationManager.m */; settings = {ASSET_TAGS = (); }; };
+		A3B427461BE1337E00102950 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B427361BE1337E00102950 /* AFHTTPSessionManager.m */; settings = {ASSET_TAGS = (); }; };
+		A3B427471BE1337E00102950 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B427391BE1337E00102950 /* AFNetworkReachabilityManager.m */; settings = {ASSET_TAGS = (); }; };
+		A3B427481BE1337E00102950 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4273B1BE1337E00102950 /* AFSecurityPolicy.m */; settings = {ASSET_TAGS = (); }; };
+		A3B427491BE1337E00102950 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4273D1BE1337E00102950 /* AFURLConnectionOperation.m */; settings = {ASSET_TAGS = (); }; };
+		A3B4274A1BE1337E00102950 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4273F1BE1337E00102950 /* AFURLRequestSerialization.m */; settings = {ASSET_TAGS = (); }; };
+		A3B4274B1BE1337E00102950 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B427411BE1337E00102950 /* AFURLResponseSerialization.m */; settings = {ASSET_TAGS = (); }; };
+		A3B4274C1BE1337E00102950 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B427431BE1337E00102950 /* AFURLSessionManager.m */; settings = {ASSET_TAGS = (); }; };
+		A3B4274E1BE133A800102950 /* Rdio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4274D1BE133A800102950 /* Rdio.framework */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD01BE29067000AC203 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FAF1BE29066000AC203 /* MKAnnotationView+WebCache.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD11BE29067000AC203 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FB11BE29066000AC203 /* NSData+ImageContentType.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD21BE29067000AC203 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FB31BE29066000AC203 /* SDImageCache.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD31BE29067000AC203 /* SDWebImageCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FB51BE29066000AC203 /* SDWebImageCompat.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD41BE29067000AC203 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FB71BE29066000AC203 /* SDWebImageDecoder.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD51BE29067000AC203 /* SDWebImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FB91BE29066000AC203 /* SDWebImageDownloader.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD61BE29067000AC203 /* SDWebImageDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FBB1BE29066000AC203 /* SDWebImageDownloaderOperation.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD71BE29067000AC203 /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FBD1BE29066000AC203 /* SDWebImageManager.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD81BE29067000AC203 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FC01BE29066000AC203 /* SDWebImagePrefetcher.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FD91BE29067000AC203 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FC21BE29066000AC203 /* UIButton+WebCache.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FDA1BE29067000AC203 /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FC41BE29066000AC203 /* UIImage+GIF.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FDB1BE29067000AC203 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FC61BE29066000AC203 /* UIImage+MultiFormat.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FDC1BE29067000AC203 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FC81BE29066000AC203 /* UIImage+WebP.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FDD1BE29067000AC203 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FCA1BE29066000AC203 /* UIImageView+HighlightedWebCache.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FDE1BE29067000AC203 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FCC1BE29066000AC203 /* UIImageView+WebCache.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FDF1BE29067000AC203 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FCE1BE29066000AC203 /* UIView+WebCacheOperation.m */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FE11BE2915B000AC203 /* tux_duce.png in Resources */ = {isa = PBXBuildFile; fileRef = A3EE4FE01BE2915B000AC203 /* tux_duce.png */; settings = {ASSET_TAGS = (); }; };
+		A3EE4FE41BE2948D000AC203 /* MusicChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EE4FE31BE2948D000AC203 /* MusicChatViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +73,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A30047571BE27D9D00EE0A85 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		A30047581BE27D9D00EE0A85 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		A300475B1BE286D600EE0A85 /* RdioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RdioTrack.h; sourceTree = "<group>"; };
+		A300475C1BE286D600EE0A85 /* RdioTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RdioTrack.m; sourceTree = "<group>"; };
 		A3B426E01BE12BFC00102950 /* DUCEPRO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DUCEPRO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B426E41BE12BFC00102950 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A3B426E61BE12BFC00102950 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +93,72 @@
 		A3B427041BE12BFC00102950 /* DUCEPROUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DUCEPROUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B427081BE12BFC00102950 /* DUCEPROUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DUCEPROUITests.m; sourceTree = "<group>"; };
 		A3B4270A1BE12BFC00102950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3B427171BE131C600102950 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A3B427191BE131CF00102950 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A3B4271B1BE131D400102950 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A3B4271D1BE131DB00102950 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A3B4271F1BE131E100102950 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A3B427211BE131E900102950 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A3B4272A1BE1331C00102950 /* AFHTTPRequestSerializer+OAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPRequestSerializer+OAuth2.h"; sourceTree = "<group>"; };
+		A3B4272B1BE1331C00102950 /* AFHTTPRequestSerializer+OAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPRequestSerializer+OAuth2.m"; sourceTree = "<group>"; };
+		A3B4272C1BE1331C00102950 /* AFOAuth2Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFOAuth2Manager.h; sourceTree = "<group>"; };
+		A3B4272D1BE1331C00102950 /* AFOAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFOAuth2Manager.m; sourceTree = "<group>"; };
+		A3B427311BE1337E00102950 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		A3B427321BE1337E00102950 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		A3B427331BE1337E00102950 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		A3B427341BE1337E00102950 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		A3B427351BE1337E00102950 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		A3B427361BE1337E00102950 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		A3B427371BE1337E00102950 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		A3B427381BE1337E00102950 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		A3B427391BE1337E00102950 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		A3B4273A1BE1337E00102950 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		A3B4273B1BE1337E00102950 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		A3B4273C1BE1337E00102950 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		A3B4273D1BE1337E00102950 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		A3B4273E1BE1337E00102950 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		A3B4273F1BE1337E00102950 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		A3B427401BE1337E00102950 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		A3B427411BE1337E00102950 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		A3B427421BE1337E00102950 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		A3B427431BE1337E00102950 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		A3B4274D1BE133A800102950 /* Rdio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Rdio.framework; sourceTree = "<group>"; };
+		A3EE4FAE1BE29066000AC203 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
+		A3EE4FAF1BE29066000AC203 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
+		A3EE4FB01BE29066000AC203 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
+		A3EE4FB11BE29066000AC203 /* NSData+ImageContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ImageContentType.m"; sourceTree = "<group>"; };
+		A3EE4FB21BE29066000AC203 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
+		A3EE4FB31BE29066000AC203 /* SDImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageCache.m; sourceTree = "<group>"; };
+		A3EE4FB41BE29066000AC203 /* SDWebImageCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompat.h; sourceTree = "<group>"; };
+		A3EE4FB51BE29066000AC203 /* SDWebImageCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageCompat.m; sourceTree = "<group>"; };
+		A3EE4FB61BE29066000AC203 /* SDWebImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDecoder.h; sourceTree = "<group>"; };
+		A3EE4FB71BE29066000AC203 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDecoder.m; sourceTree = "<group>"; };
+		A3EE4FB81BE29066000AC203 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloader.h; sourceTree = "<group>"; };
+		A3EE4FB91BE29066000AC203 /* SDWebImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloader.m; sourceTree = "<group>"; };
+		A3EE4FBA1BE29066000AC203 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
+		A3EE4FBB1BE29066000AC203 /* SDWebImageDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageDownloaderOperation.m; sourceTree = "<group>"; };
+		A3EE4FBC1BE29066000AC203 /* SDWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageManager.h; sourceTree = "<group>"; };
+		A3EE4FBD1BE29066000AC203 /* SDWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageManager.m; sourceTree = "<group>"; };
+		A3EE4FBE1BE29066000AC203 /* SDWebImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageOperation.h; sourceTree = "<group>"; };
+		A3EE4FBF1BE29066000AC203 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImagePrefetcher.h; sourceTree = "<group>"; };
+		A3EE4FC01BE29066000AC203 /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImagePrefetcher.m; sourceTree = "<group>"; };
+		A3EE4FC11BE29066000AC203 /* UIButton+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WebCache.h"; sourceTree = "<group>"; };
+		A3EE4FC21BE29066000AC203 /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
+		A3EE4FC31BE29066000AC203 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
+		A3EE4FC41BE29066000AC203 /* UIImage+GIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIF.m"; sourceTree = "<group>"; };
+		A3EE4FC51BE29066000AC203 /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MultiFormat.h"; sourceTree = "<group>"; };
+		A3EE4FC61BE29066000AC203 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MultiFormat.m"; sourceTree = "<group>"; };
+		A3EE4FC71BE29066000AC203 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
+		A3EE4FC81BE29066000AC203 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
+		A3EE4FC91BE29066000AC203 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
+		A3EE4FCA1BE29066000AC203 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
+		A3EE4FCB1BE29066000AC203 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
+		A3EE4FCC1BE29066000AC203 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		A3EE4FCD1BE29066000AC203 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
+		A3EE4FCE1BE29066000AC203 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		A3EE4FE01BE2915B000AC203 /* tux_duce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tux_duce.png; sourceTree = "<group>"; };
+		A3EE4FE21BE2948D000AC203 /* MusicChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicChatViewController.h; sourceTree = "<group>"; };
+		A3EE4FE31BE2948D000AC203 /* MusicChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicChatViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +166,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B427221BE131E900102950 /* SystemConfiguration.framework in Frameworks */,
+				A3B427201BE131E100102950 /* Security.framework in Frameworks */,
+				A3B4271E1BE131DB00102950 /* CoreMedia.framework in Frameworks */,
+				A3B4271C1BE131D400102950 /* CoreGraphics.framework in Frameworks */,
+				A3B4271A1BE131CF00102950 /* CFNetwork.framework in Frameworks */,
+				A3B427181BE131C600102950 /* AudioToolbox.framework in Frameworks */,
+				A3B4274E1BE133A800102950 /* Rdio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +193,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A300475A1BE286C000EE0A85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A300475B1BE286D600EE0A85 /* RdioTrack.h */,
+				A300475C1BE286D600EE0A85 /* RdioTrack.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		A3B426D71BE12BFC00102950 = {
 			isa = PBXGroup;
 			children = (
+				A3B427161BE1311800102950 /* Frameworks */,
 				A3B426E21BE12BFC00102950 /* DUCEPRO */,
 				A3B426FC1BE12BFC00102950 /* DUCEPROTests */,
 				A3B427071BE12BFC00102950 /* DUCEPROUITests */,
@@ -101,11 +226,17 @@
 		A3B426E21BE12BFC00102950 /* DUCEPRO */ = {
 			isa = PBXGroup;
 			children = (
+				A3EE4FAD1BE29054000AC203 /* Libraries */,
+				A300475A1BE286C000EE0A85 /* Model */,
 				A3B426E61BE12BFC00102950 /* AppDelegate.h */,
 				A3B426E71BE12BFC00102950 /* AppDelegate.m */,
 				A3B426E91BE12BFC00102950 /* ViewController.h */,
 				A3B426EA1BE12BFC00102950 /* ViewController.m */,
 				A3B426EC1BE12BFC00102950 /* Main.storyboard */,
+				A30047571BE27D9D00EE0A85 /* SearchViewController.h */,
+				A30047581BE27D9D00EE0A85 /* SearchViewController.m */,
+				A3EE4FE21BE2948D000AC203 /* MusicChatViewController.h */,
+				A3EE4FE31BE2948D000AC203 /* MusicChatViewController.m */,
 				A3B426EF1BE12BFC00102950 /* Assets.xcassets */,
 				A3B426F11BE12BFC00102950 /* LaunchScreen.storyboard */,
 				A3B426F41BE12BFC00102950 /* Info.plist */,
@@ -117,6 +248,7 @@
 		A3B426E31BE12BFC00102950 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3EE4FE01BE2915B000AC203 /* tux_duce.png */,
 				A3B426E41BE12BFC00102950 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +270,108 @@
 				A3B4270A1BE12BFC00102950 /* Info.plist */,
 			);
 			path = DUCEPROUITests;
+			sourceTree = "<group>";
+		};
+		A3B427161BE1311800102950 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3B4274D1BE133A800102950 /* Rdio.framework */,
+				A3B427301BE1337300102950 /* AFNetworking */,
+				A3B427231BE1329200102950 /* AFOAuth2Manager */,
+				A3B427211BE131E900102950 /* SystemConfiguration.framework */,
+				A3B4271F1BE131E100102950 /* Security.framework */,
+				A3B4271D1BE131DB00102950 /* CoreMedia.framework */,
+				A3B4271B1BE131D400102950 /* CoreGraphics.framework */,
+				A3B427191BE131CF00102950 /* CFNetwork.framework */,
+				A3B427171BE131C600102950 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3B427231BE1329200102950 /* AFOAuth2Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A3B4272A1BE1331C00102950 /* AFHTTPRequestSerializer+OAuth2.h */,
+				A3B4272B1BE1331C00102950 /* AFHTTPRequestSerializer+OAuth2.m */,
+				A3B4272C1BE1331C00102950 /* AFOAuth2Manager.h */,
+				A3B4272D1BE1331C00102950 /* AFOAuth2Manager.m */,
+			);
+			name = AFOAuth2Manager;
+			sourceTree = "<group>";
+		};
+		A3B427301BE1337300102950 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				A3B427311BE1337E00102950 /* AFHTTPRequestOperation.h */,
+				A3B427321BE1337E00102950 /* AFHTTPRequestOperation.m */,
+				A3B427331BE1337E00102950 /* AFHTTPRequestOperationManager.h */,
+				A3B427341BE1337E00102950 /* AFHTTPRequestOperationManager.m */,
+				A3B427351BE1337E00102950 /* AFHTTPSessionManager.h */,
+				A3B427361BE1337E00102950 /* AFHTTPSessionManager.m */,
+				A3B427371BE1337E00102950 /* AFNetworking.h */,
+				A3B427381BE1337E00102950 /* AFNetworkReachabilityManager.h */,
+				A3B427391BE1337E00102950 /* AFNetworkReachabilityManager.m */,
+				A3B4273A1BE1337E00102950 /* AFSecurityPolicy.h */,
+				A3B4273B1BE1337E00102950 /* AFSecurityPolicy.m */,
+				A3B4273C1BE1337E00102950 /* AFURLConnectionOperation.h */,
+				A3B4273D1BE1337E00102950 /* AFURLConnectionOperation.m */,
+				A3B4273E1BE1337E00102950 /* AFURLRequestSerialization.h */,
+				A3B4273F1BE1337E00102950 /* AFURLRequestSerialization.m */,
+				A3B427401BE1337E00102950 /* AFURLResponseSerialization.h */,
+				A3B427411BE1337E00102950 /* AFURLResponseSerialization.m */,
+				A3B427421BE1337E00102950 /* AFURLSessionManager.h */,
+				A3B427431BE1337E00102950 /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+		A3EE4FAD1BE29054000AC203 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A3EE4FCF1BE29066000AC203 /* SDWebImage */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A3EE4FCF1BE29066000AC203 /* SDWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				A3EE4FAE1BE29066000AC203 /* MKAnnotationView+WebCache.h */,
+				A3EE4FAF1BE29066000AC203 /* MKAnnotationView+WebCache.m */,
+				A3EE4FB01BE29066000AC203 /* NSData+ImageContentType.h */,
+				A3EE4FB11BE29066000AC203 /* NSData+ImageContentType.m */,
+				A3EE4FB21BE29066000AC203 /* SDImageCache.h */,
+				A3EE4FB31BE29066000AC203 /* SDImageCache.m */,
+				A3EE4FB41BE29066000AC203 /* SDWebImageCompat.h */,
+				A3EE4FB51BE29066000AC203 /* SDWebImageCompat.m */,
+				A3EE4FB61BE29066000AC203 /* SDWebImageDecoder.h */,
+				A3EE4FB71BE29066000AC203 /* SDWebImageDecoder.m */,
+				A3EE4FB81BE29066000AC203 /* SDWebImageDownloader.h */,
+				A3EE4FB91BE29066000AC203 /* SDWebImageDownloader.m */,
+				A3EE4FBA1BE29066000AC203 /* SDWebImageDownloaderOperation.h */,
+				A3EE4FBB1BE29066000AC203 /* SDWebImageDownloaderOperation.m */,
+				A3EE4FBC1BE29066000AC203 /* SDWebImageManager.h */,
+				A3EE4FBD1BE29066000AC203 /* SDWebImageManager.m */,
+				A3EE4FBE1BE29066000AC203 /* SDWebImageOperation.h */,
+				A3EE4FBF1BE29066000AC203 /* SDWebImagePrefetcher.h */,
+				A3EE4FC01BE29066000AC203 /* SDWebImagePrefetcher.m */,
+				A3EE4FC11BE29066000AC203 /* UIButton+WebCache.h */,
+				A3EE4FC21BE29066000AC203 /* UIButton+WebCache.m */,
+				A3EE4FC31BE29066000AC203 /* UIImage+GIF.h */,
+				A3EE4FC41BE29066000AC203 /* UIImage+GIF.m */,
+				A3EE4FC51BE29066000AC203 /* UIImage+MultiFormat.h */,
+				A3EE4FC61BE29066000AC203 /* UIImage+MultiFormat.m */,
+				A3EE4FC71BE29066000AC203 /* UIImage+WebP.h */,
+				A3EE4FC81BE29066000AC203 /* UIImage+WebP.m */,
+				A3EE4FC91BE29066000AC203 /* UIImageView+HighlightedWebCache.h */,
+				A3EE4FCA1BE29066000AC203 /* UIImageView+HighlightedWebCache.m */,
+				A3EE4FCB1BE29066000AC203 /* UIImageView+WebCache.h */,
+				A3EE4FCC1BE29066000AC203 /* UIImageView+WebCache.m */,
+				A3EE4FCD1BE29066000AC203 /* UIView+WebCacheOperation.h */,
+				A3EE4FCE1BE29066000AC203 /* UIView+WebCacheOperation.m */,
+			);
+			name = SDWebImage;
+			path = "../../TechTatva-15/TechTatva15/SDWebImage";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +477,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3EE4FE11BE2915B000AC203 /* tux_duce.png in Resources */,
 				A3B426F31BE12BFC00102950 /* LaunchScreen.storyboard in Resources */,
 				A3B426F01BE12BFC00102950 /* Assets.xcassets in Resources */,
 				A3B426EE1BE12BFC00102950 /* Main.storyboard in Resources */,
@@ -270,9 +505,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3EE4FDA1BE29067000AC203 /* UIImage+GIF.m in Sources */,
+				A3B427491BE1337E00102950 /* AFURLConnectionOperation.m in Sources */,
+				A3B427441BE1337E00102950 /* AFHTTPRequestOperation.m in Sources */,
+				A3B427471BE1337E00102950 /* AFNetworkReachabilityManager.m in Sources */,
+				A3B4274C1BE1337E00102950 /* AFURLSessionManager.m in Sources */,
+				A3EE4FDC1BE29067000AC203 /* UIImage+WebP.m in Sources */,
+				A3EE4FD11BE29067000AC203 /* NSData+ImageContentType.m in Sources */,
+				A3B4274A1BE1337E00102950 /* AFURLRequestSerialization.m in Sources */,
 				A3B426EB1BE12BFC00102950 /* ViewController.m in Sources */,
+				A3EE4FD41BE29067000AC203 /* SDWebImageDecoder.m in Sources */,
+				A3EE4FE41BE2948D000AC203 /* MusicChatViewController.m in Sources */,
+				A3B4274B1BE1337E00102950 /* AFURLResponseSerialization.m in Sources */,
+				A3EE4FD91BE29067000AC203 /* UIButton+WebCache.m in Sources */,
+				A3EE4FD71BE29067000AC203 /* SDWebImageManager.m in Sources */,
+				A30047591BE27D9D00EE0A85 /* SearchViewController.m in Sources */,
+				A3EE4FDE1BE29067000AC203 /* UIImageView+WebCache.m in Sources */,
+				A3B4272F1BE1331C00102950 /* AFOAuth2Manager.m in Sources */,
+				A300475D1BE286D600EE0A85 /* RdioTrack.m in Sources */,
 				A3B426E81BE12BFC00102950 /* AppDelegate.m in Sources */,
+				A3B427451BE1337E00102950 /* AFHTTPRequestOperationManager.m in Sources */,
+				A3EE4FDD1BE29067000AC203 /* UIImageView+HighlightedWebCache.m in Sources */,
+				A3EE4FD51BE29067000AC203 /* SDWebImageDownloader.m in Sources */,
+				A3EE4FD81BE29067000AC203 /* SDWebImagePrefetcher.m in Sources */,
+				A3B427481BE1337E00102950 /* AFSecurityPolicy.m in Sources */,
+				A3EE4FD21BE29067000AC203 /* SDImageCache.m in Sources */,
+				A3EE4FD61BE29067000AC203 /* SDWebImageDownloaderOperation.m in Sources */,
+				A3B4272E1BE1331C00102950 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
+				A3EE4FD01BE29067000AC203 /* MKAnnotationView+WebCache.m in Sources */,
+				A3EE4FDB1BE29067000AC203 /* UIImage+MultiFormat.m in Sources */,
+				A3EE4FDF1BE29067000AC203 /* UIView+WebCacheOperation.m in Sources */,
+				A3EE4FD31BE29067000AC203 /* SDWebImageCompat.m in Sources */,
 				A3B426E51BE12BFC00102950 /* main.m in Sources */,
+				A3B427461BE1337E00102950 /* AFHTTPSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,8 +676,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DUCEPRO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -422,8 +692,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = DUCEPRO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -496,6 +771,7 @@
 				A3B4270F1BE12BFC00102950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3B427101BE12BFC00102950 /* Build configuration list for PBXNativeTarget "DUCEPROTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +780,7 @@
 				A3B427121BE12BFC00102950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3B427131BE12BFC00102950 /* Build configuration list for PBXNativeTarget "DUCEPROUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +789,7 @@
 				A3B427151BE12BFC00102950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -12,11 +12,26 @@
 
 @end
 
+static Rdio * _rdioInstance;
+
 @implementation AppDelegate
+
++ (Rdio *)sharedRdio
+{
+    if (_rdioInstance == nil) {
+        _rdioInstance = [[Rdio alloc] initWithClientId:@"evmv6322brdixbus35sty7f6ya"
+                                             andSecret:@"9CRVzbGmpu2q5GEZv9qGhw"
+                                              delegate:nil];
+    }
+    return _rdioInstance;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+//    Rdio *r = [AppDelegate sharedRdio];
+    
     return YES;
 }
 

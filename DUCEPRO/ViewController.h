@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Rdio/Rdio.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <RdioDelegate, RDPlayerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
+
+- (IBAction)loginTapped:(id)sender;
+- (IBAction)playPauseTapped:(id)sender;
 
 @end
 
