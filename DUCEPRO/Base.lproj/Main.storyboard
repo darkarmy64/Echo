@@ -59,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="559" y="354"/>
         </scene>
-        <!--Music Chat View Controller-->
+        <!--ECHO-->
         <scene sceneID="dey-Q1-nug">
             <objects>
                 <viewController id="T42-T1-xHE" customClass="MusicChatViewController" sceneMemberID="viewController">
@@ -102,7 +102,7 @@
                             <constraint firstAttribute="trailing" secondItem="ley-Zy-SOI" secondAttribute="trailing" id="b7U-sU-s8Q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Xg5-WT-6av">
+                    <navigationItem key="navigationItem" title="ECHO" id="Xg5-WT-6av">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="edc-71-ysH">
                             <connections>
                                 <action selector="openSearchView:" destination="T42-T1-xHE" id="foe-3w-aUt"/>

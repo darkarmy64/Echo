@@ -193,6 +193,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		595A73951BE3F7D400258408 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A3B426E61BE12BFC00102950 /* AppDelegate.h */,
+				A3B426E71BE12BFC00102950 /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		595A73961BE3F7E200258408 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				595A73981BE3F81200258408 /* Main */,
+				595A739A1BE3F82000258408 /* Search */,
+				595A73991BE3F81A00258408 /* Music Chat */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		595A73971BE3F7EA00258408 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A3B426EC1BE12BFC00102950 /* Main.storyboard */,
+				A3B426F11BE12BFC00102950 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		595A73981BE3F81200258408 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A3B426E91BE12BFC00102950 /* ViewController.h */,
+				A3B426EA1BE12BFC00102950 /* ViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		595A73991BE3F81A00258408 /* Music Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A3EE4FE21BE2948D000AC203 /* MusicChatViewController.h */,
+				A3EE4FE31BE2948D000AC203 /* MusicChatViewController.m */,
+			);
+			name = "Music Chat";
+			sourceTree = "<group>";
+		};
+		595A739A1BE3F82000258408 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				A30047571BE27D9D00EE0A85 /* SearchViewController.h */,
+				A30047581BE27D9D00EE0A85 /* SearchViewController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		A300475A1BE286C000EE0A85 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +260,29 @@
 		A33311B81BE3C3A200EA4A98 /* AFNetworkingAuth */ = {
 			isa = PBXGroup;
 			children = (
+				A33311B91BE3C3B200EA4A98 /* AFHTTPRequestOperation.h */,
+				A33311BA1BE3C3B200EA4A98 /* AFHTTPRequestOperation.m */,
+				A33311BB1BE3C3B200EA4A98 /* AFHTTPRequestOperationManager.h */,
+				A33311BC1BE3C3B200EA4A98 /* AFHTTPRequestOperationManager.m */,
+				A33311BD1BE3C3B200EA4A98 /* AFHTTPRequestSerializer+OAuth2.h */,
+				A33311BE1BE3C3B200EA4A98 /* AFHTTPRequestSerializer+OAuth2.m */,
+				A33311BF1BE3C3B200EA4A98 /* AFHTTPSessionManager.h */,
+				A33311C01BE3C3B200EA4A98 /* AFHTTPSessionManager.m */,
+				A33311C11BE3C3B200EA4A98 /* AFNetworking.h */,
+				A33311C21BE3C3B200EA4A98 /* AFNetworkReachabilityManager.h */,
+				A33311C31BE3C3B200EA4A98 /* AFNetworkReachabilityManager.m */,
+				A33311C41BE3C3B200EA4A98 /* AFOAuth2Manager.h */,
+				A33311C51BE3C3B200EA4A98 /* AFOAuth2Manager.m */,
+				A33311C61BE3C3B200EA4A98 /* AFSecurityPolicy.h */,
+				A33311C71BE3C3B200EA4A98 /* AFSecurityPolicy.m */,
+				A33311C81BE3C3B200EA4A98 /* AFURLConnectionOperation.h */,
+				A33311C91BE3C3B200EA4A98 /* AFURLConnectionOperation.m */,
+				A33311CA1BE3C3B200EA4A98 /* AFURLRequestSerialization.h */,
+				A33311CB1BE3C3B200EA4A98 /* AFURLRequestSerialization.m */,
+				A33311CC1BE3C3B200EA4A98 /* AFURLResponseSerialization.h */,
+				A33311CD1BE3C3B200EA4A98 /* AFURLResponseSerialization.m */,
+				A33311CE1BE3C3B200EA4A98 /* AFURLSessionManager.h */,
+				A33311CF1BE3C3B200EA4A98 /* AFURLSessionManager.m */,
 			);
 			name = AFNetworkingAuth;
 			sourceTree = "<group>";
@@ -273,20 +351,12 @@
 		A3B426E21BE12BFC00102950 /* DUCEPRO */ = {
 			isa = PBXGroup;
 			children = (
+				A3B426EF1BE12BFC00102950 /* Assets.xcassets */,
+				595A73951BE3F7D400258408 /* App Delegate */,
 				A3EE4FAD1BE29054000AC203 /* Libraries */,
 				A300475A1BE286C000EE0A85 /* Model */,
-				A3B426E61BE12BFC00102950 /* AppDelegate.h */,
-				A3B426E71BE12BFC00102950 /* AppDelegate.m */,
-				A3B426E91BE12BFC00102950 /* ViewController.h */,
-				A3B426EA1BE12BFC00102950 /* ViewController.m */,
-				A3B426EC1BE12BFC00102950 /* Main.storyboard */,
-				A30047571BE27D9D00EE0A85 /* SearchViewController.h */,
-				A30047581BE27D9D00EE0A85 /* SearchViewController.m */,
-				A3EE4FE21BE2948D000AC203 /* MusicChatViewController.h */,
-				A3EE4FE31BE2948D000AC203 /* MusicChatViewController.m */,
-				A3B426EF1BE12BFC00102950 /* Assets.xcassets */,
-				A3B426F11BE12BFC00102950 /* LaunchScreen.storyboard */,
-				A3B426F41BE12BFC00102950 /* Info.plist */,
+				595A73971BE3F7EA00258408 /* Views */,
+				595A73961BE3F7E200258408 /* Controllers */,
 				A3B426E31BE12BFC00102950 /* Supporting Files */,
 			);
 			path = DUCEPRO;
@@ -295,6 +365,7 @@
 		A3B426E31BE12BFC00102950 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3B426F41BE12BFC00102950 /* Info.plist */,
 				A3EE4FE01BE2915B000AC203 /* tux_duce.png */,
 				A3B426E41BE12BFC00102950 /* main.m */,
 			);
@@ -337,29 +408,6 @@
 			isa = PBXGroup;
 			children = (
 				A33311B81BE3C3A200EA4A98 /* AFNetworkingAuth */,
-				A33311B91BE3C3B200EA4A98 /* AFHTTPRequestOperation.h */,
-				A33311BA1BE3C3B200EA4A98 /* AFHTTPRequestOperation.m */,
-				A33311BB1BE3C3B200EA4A98 /* AFHTTPRequestOperationManager.h */,
-				A33311BC1BE3C3B200EA4A98 /* AFHTTPRequestOperationManager.m */,
-				A33311BD1BE3C3B200EA4A98 /* AFHTTPRequestSerializer+OAuth2.h */,
-				A33311BE1BE3C3B200EA4A98 /* AFHTTPRequestSerializer+OAuth2.m */,
-				A33311BF1BE3C3B200EA4A98 /* AFHTTPSessionManager.h */,
-				A33311C01BE3C3B200EA4A98 /* AFHTTPSessionManager.m */,
-				A33311C11BE3C3B200EA4A98 /* AFNetworking.h */,
-				A33311C21BE3C3B200EA4A98 /* AFNetworkReachabilityManager.h */,
-				A33311C31BE3C3B200EA4A98 /* AFNetworkReachabilityManager.m */,
-				A33311C41BE3C3B200EA4A98 /* AFOAuth2Manager.h */,
-				A33311C51BE3C3B200EA4A98 /* AFOAuth2Manager.m */,
-				A33311C61BE3C3B200EA4A98 /* AFSecurityPolicy.h */,
-				A33311C71BE3C3B200EA4A98 /* AFSecurityPolicy.m */,
-				A33311C81BE3C3B200EA4A98 /* AFURLConnectionOperation.h */,
-				A33311C91BE3C3B200EA4A98 /* AFURLConnectionOperation.m */,
-				A33311CA1BE3C3B200EA4A98 /* AFURLRequestSerialization.h */,
-				A33311CB1BE3C3B200EA4A98 /* AFURLRequestSerialization.m */,
-				A33311CC1BE3C3B200EA4A98 /* AFURLResponseSerialization.h */,
-				A33311CD1BE3C3B200EA4A98 /* AFURLResponseSerialization.m */,
-				A33311CE1BE3C3B200EA4A98 /* AFURLSessionManager.h */,
-				A33311CF1BE3C3B200EA4A98 /* AFURLSessionManager.m */,
 				A376646B1BE3A6D30044C962 /* SDWebImage */,
 			);
 			name = Libraries;
@@ -432,7 +480,7 @@
 				TargetAttributes = {
 					A3B426DF1BE12BFC00102950 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = M2TZJK2U6H;
+						DevelopmentTeam = HN3SCP8A52;
 					};
 					A3B426F81BE12BFC00102950 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -679,7 +727,7 @@
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5137695-c602-4194-94d7-2d39caa457f3";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -698,7 +746,7 @@
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5137695-c602-4194-94d7-2d39caa457f3";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -27,6 +27,19 @@
     [super viewDidLoad];
     _rdio = [AppDelegate sharedRdio];
     [_rdio setDelegate:self];
+	
+	_trackSearchBar = [[UISearchBar alloc] init];
+	[_trackSearchBar sizeToFit];
+	[_trackSearchBar setDelegate:self];
+	[_trackSearchBar setPlaceholder:@"Search"];
+	[_trackSearchBar setShowsCancelButton:YES];
+	
+	[_trackSearchBar becomeFirstResponder];
+	
+	[self.navigationItem setTitleView:_trackSearchBar];
+	
+//	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewControllerAnimated:completion:)];
+//	self.navigationItem.leftBarButtonItem = doneButton;
 }
 
 - (void)cancelSearch {
@@ -40,6 +53,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Scroll view delegate
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	[self.trackSearchBar resignFirstResponder];
 }
 
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -94,7 +113,10 @@
     return blankView;
 }
 
+/*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+ 
+ // Instead of this add a results count view
     
     _trackSearchBar = [[UISearchBar alloc] init];
     [_trackSearchBar sizeToFit];
@@ -102,10 +124,12 @@
     return _trackSearchBar;
 
 }
-
+*/
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 44;
 }
+ */
 #pragma mark Search Bar Delegate
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
@@ -133,6 +157,10 @@
 {
     [searchBar resignFirstResponder];
     // You can write search code Here
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	[self dismissViewControllerAnimated:YES completion:^{ }];
 }
 
 /*
