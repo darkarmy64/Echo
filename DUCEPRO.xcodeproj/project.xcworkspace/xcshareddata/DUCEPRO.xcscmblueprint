@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7ED110DB767A8188C695EF9E223507A62C239324",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9A2BA4695D7B131BD7E8C2C086219A74EE24144C" : 0,
+    "7ED110DB767A8188C695EF9E223507A62C239324" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "52F51A93-9190-4486-B833-4C69F8885C5E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9A2BA4695D7B131BD7E8C2C086219A74EE24144C" : "TechTatva-15\/",
+    "7ED110DB767A8188C695EF9E223507A62C239324" : "DUCEPRO\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DUCEPRO",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "DUCEPRO.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shubhsin\/ducepro.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7ED110DB767A8188C695EF9E223507A62C239324"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shubhsin\/TechTatva-15.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9A2BA4695D7B131BD7E8C2C086219A74EE24144C"
+    }
+  ]
+}

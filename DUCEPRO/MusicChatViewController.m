@@ -15,8 +15,10 @@
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
 #import "TwitterViewController.h"
+#import "MNCChatMessageCell.h"
 
-@interface MusicChatViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,RdioDelegate,RDPlayerDelegate>
+
+@interface MusicChatViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,RdioDelegate,RDPlayerDelegate,UITextFieldDelegate>
 {
     UIImageView * trackImageView;
     RdioTrack * currentTrack;
@@ -32,6 +34,10 @@
     BOOL _loggedIn;
 
 }
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *messageEditField;
+
 @end
 
 @implementation MusicChatViewController
@@ -46,12 +52,23 @@
     [_rdio setDelegate:self];
     _player = [_rdio preparePlayerWithDelegate:self];
 	
+    self.navigationItem.title = self.chatMateId;
+    self.messageArray = [[NSMutableArray alloc] init];
+    
+    [self retrieveMessagesFromParseWithChatMateID:self.chatMateId];
+    
 	/* Push Twitter VC
 	TwitterViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TwitterVC"];
 	tvc.searchString = @"SearchString";
 	[self.navigationController pushViewController:tvc animated:YES];
 	 */
-	
+    // Automatically determine the height of each self-sizing tabel view cells - an iOS 8 feature
+    self.myTableView.rowHeight = UITableViewAutomaticDimension;     /* add this line */
+    [self retrieveMessagesFromParseWithChatMateID:self.chatMateId];
+    UITapGestureRecognizer *tapTableGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView)];
+    [self.myTableView addGestureRecognizer:tapTableGR];
+    [self registerForKeyboardNotifications];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -65,12 +82,76 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [_player.queue removeAll];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageDelivered:) name:SINCH_MESSAGE_RECIEVED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageDelivered:) name:SINCH_MESSAGE_SENT object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark Helper Methods
+
+- (void)didTapOnTableView {
+    [self.activeTextField resignFirstResponder];
+}
+
+
+// Setting up keyboard notifications.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWasShown:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent.
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(kbSize.height, 0.0, kbSize.height, 0.0);
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your app might not need or want this behavior.
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.activeTextField.frame.origin) ) {
+        [self.scrollView scrollRectToVisible:self.activeTextField.frame animated:NO];
+    }
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = contentInsets;
+    self.scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    self.activeTextField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    self.activeTextField = nil;
+}
 
 - (void)receiveMessage:(RdioTrack *)track {
     currentTrack = track;
@@ -82,6 +163,60 @@
 
 }
 
+
+- (void)retrieveMessagesFromParseWithChatMateID:(NSString *)chatMateId {
+    NSArray *userNames = @[self.myUserId, chatMateId];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"SinchMessage"];
+    [query whereKey:@"senderId" containedIn:userNames];
+    [query whereKey:@"recipientId" containedIn:userNames];
+    [query orderByAscending:@"timestamp"];
+    
+    __weak typeof(self) weakSelf = self;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *chatMessageArray, NSError *error) {
+        if (!error) {
+            // Store all retrieve messages into messageArray
+            for (int i = 0; i < [chatMessageArray count]; i++) {
+                MNCChatMessage *chatMessage = [[MNCChatMessage alloc] init];
+                
+                [chatMessage setMessageId:chatMessageArray[i][@"messageId"]];
+                [chatMessage setSenderId:chatMessageArray[i][@"senderId"]];
+                [chatMessage setRecipientIds:[NSArray arrayWithObject:chatMessageArray[i][@"recipientId"]]];
+                [chatMessage setText:chatMessageArray[i][@"text"]];
+                [chatMessage setTimestamp:chatMessageArray[i][@"timestamp"]];
+                
+                [weakSelf.messageArray addObject:chatMessage];
+            }
+            [weakSelf.myTableView reloadData];  // Refresh the table view
+            [weakSelf scrollTableToBottom];  // Scroll to the bottom of the table view
+        } else {
+            NSLog(@"Error: %@", error.description);
+        }
+    }];
+}
+
+- (void)sendMessage:(id)sender
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+//    NSLog(@"MESSAGE ON TEXT FIELD: %@",self.messageEditField.text);
+    [appDelegate sendTextMessage:self.messageEditField.text toRecipient:self.chatMateId];
+}
+
+- (void)messageDelivered:(NSNotification *)notification
+{
+    MNCChatMessage *chatMessage = [[notification userInfo] objectForKey:@"message"];
+    NSLog(@"MESSAGE : %@",chatMessage.text);
+    [self.messageArray addObject:chatMessage];
+    [self.myTableView reloadData];
+    [self scrollTableToBottom];
+}
+
+- (void)scrollTableToBottom {
+    int rowNumber = (int)[self.myTableView numberOfRowsInSection:0];
+    if (rowNumber > 0) [self.myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:rowNumber-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+
 #pragma mark - Table View
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -91,17 +226,31 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.messageArray count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * cellIdentifier = @"Cell";
+    MNCChatMessageCell *messageCell = [tableView dequeueReusableCellWithIdentifier:@"MessageListPrototypeCell" forIndexPath:indexPath];
+    [self configureCell:messageCell forIndexPath:indexPath];
     
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    return messageCell;
+
+}
+
+- (void)configureCell:(MNCChatMessageCell *)messageCell forIndexPath:(NSIndexPath *)indexPath {
     
+    MNCChatMessage *chatMessage = self.messageArray[indexPath.row];
     
-    return cell;
+    if ([[chatMessage senderId] isEqualToString:self.myUserId]) {
+        // If the message was sent by myself
+        messageCell.chatMateMessageLabel.text = @"";
+        messageCell.myMessageLabel.text = chatMessage.text;
+    } else {
+        // If the message was sent by the chat mate
+        messageCell.myMessageLabel.text = @"";
+        messageCell.chatMateMessageLabel.text = chatMessage.text;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -214,7 +363,5 @@
     secondVC.delegate = firstVC;
 //    }
 }
-
-
 
 @end

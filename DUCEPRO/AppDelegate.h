@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Rdio/Rdio.h>
 #import "SVProgressHUD.h"
+#import <Parse/Parse.h>
+#import "Config.h"
+#import <Sinch/Sinch.h>
+#import "Config.h"
 
 #define SWidth [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
@@ -26,10 +30,14 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 #define SHOW_ALERT_IN_MAIN_QUEUE(alertMessage) dispatch_async(dispatch_get_main_queue(), ^{ SHOW_ALERT(alertMessage) });
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,SINClientDelegate,SINMessageClientDelegate>
 
+@property (strong, nonatomic) id<SINClient> sinchClient;
 @property (strong, nonatomic) UIWindow *window;
 + (Rdio *)sharedRdio;
+- (void)initSinchClient:(NSString*)userId;
+@property (strong, nonatomic) id<SINMessageClient> sinchMessageClient;
+- (void)sendTextMessage:(NSString *)messageText toRecipient:(NSString *)recipientId;
 
 @end
 
