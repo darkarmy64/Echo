@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		A30047591BE27D9D00EE0A85 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30047581BE27D9D00EE0A85 /* SearchViewController.m */; };
 		A300475D1BE286D600EE0A85 /* RdioTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = A300475C1BE286D600EE0A85 /* RdioTrack.m */; };
 		A33311D01BE3C3B200EA4A98 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A33311BA1BE3C3B200EA4A98 /* AFHTTPRequestOperation.m */; };
@@ -73,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59A2F50D1BE45AC9008E026E /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		A30047571BE27D9D00EE0A85 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		A30047581BE27D9D00EE0A85 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		A300475B1BE286D600EE0A85 /* RdioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RdioTrack.h; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 			children = (
 				A3B426EC1BE12BFC00102950 /* Main.storyboard */,
 				A3B426F11BE12BFC00102950 /* LaunchScreen.storyboard */,
+				59A2F5101BE45ACD008E026E /* Search Table View Cell */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -246,6 +250,15 @@
 				A30047581BE27D9D00EE0A85 /* SearchViewController.m */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		59A2F5101BE45ACD008E026E /* Search Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				59A2F50D1BE45AC9008E026E /* SearchTableViewCell.h */,
+				59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */,
+			);
+			name = "Search Table View Cell";
 			sourceTree = "<group>";
 		};
 		A300475A1BE286C000EE0A85 /* Model */ = {
@@ -548,6 +561,7 @@
 				A33311D81BE3C3B200EA4A98 /* AFURLRequestSerialization.m in Sources */,
 				A37664921BE3A9B70044C962 /* SDWebImageDownloader.m in Sources */,
 				A37664951BE3A9B70044C962 /* SDWebImagePrefetcher.m in Sources */,
+				59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */,
 				A33311D01BE3C3B200EA4A98 /* AFHTTPRequestOperation.m in Sources */,
 				A376649C1BE3A9B70044C962 /* UIView+WebCacheOperation.m in Sources */,
 				A33311D71BE3C3B200EA4A98 /* AFURLConnectionOperation.m in Sources */,

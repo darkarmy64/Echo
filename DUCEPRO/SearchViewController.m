@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "RdioTrack.h"
 #import "UIImageView+WebCache.h"
+#import "SearchTableViewCell.h"
 
 @interface SearchViewController () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,RdioDelegate>
 {
@@ -81,15 +82,23 @@
     return _trackArray.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 60.f;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * cellIdentifier = @"Cell";
+    static NSString * cellIdentifier = @"SearchCell";
     
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    RdioTrack * track = [_trackArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = track.trackName;
-    cell.detailTextLabel.text = track.trackAlbum;
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:track.trackIcon] placeholderImage:[UIImage imageNamed:@"tux_duce.png"]];
+    SearchTableViewCell *cell = (SearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+	
+	if (cell == nil)
+		cell = (SearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	
+    RdioTrack *track = [_trackArray objectAtIndex:indexPath.row];
+	cell.trackNameLabel.text = track.trackName;
+	cell.trackAlbumLabel.text = [NSString stringWithFormat:@"%@ | %@", track.trackArtist, track.trackAlbum];
+    [cell.trackCoverImageView sd_setImageWithURL:[NSURL URLWithString:track.trackIcon] placeholderImage:[UIImage imageNamed:@"tux_duce.png"]];
      
     return cell;
 }
@@ -104,14 +113,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView * blankView = [[UIView alloc] initWithFrame:CGRectZero];
-    return blankView;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 0;
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//    UIView * blankView = [[UIView alloc] initWithFrame:CGRectZero];
+//    return blankView;
+//}
 
 /*
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -131,6 +140,12 @@
 }
  */
 #pragma mark Search Bar Delegate
+
+-(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+	if (searchBar.text.length > 0)
+		return YES;
+	return NO;
+}
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     
