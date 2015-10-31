@@ -30,9 +30,9 @@
     // Segue to open a dialog
     if ([segue.identifier isEqualToString:@"OpenDialogSegue"]) {
         self.activeDialogViewController = segue.destinationViewController;
-        NSInteger chatMateIndex = [[self.tableView indexPathForCell:(UITableViewCell *)sender] row];
-        
-        self.activeDialogViewController.chatMateId = self.chatMatesArray[chatMateIndex];
+        //        NSInteger chatMateIndex = [[self.tableView indexPathForCell:(UITableViewCell *)sender] row];
+        NSInteger actualIndex = [[self.tableView indexPathForSelectedRow] row];
+        self.activeDialogViewController.chatMateId = self.chatMatesArray[actualIndex];
         self.activeDialogViewController.myUserId = self.myUserId;   /* add this line */
         return;
     }

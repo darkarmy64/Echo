@@ -55,8 +55,6 @@
     self.navigationItem.title = self.chatMateId;
     self.messageArray = [[NSMutableArray alloc] init];
     
-    [self retrieveMessagesFromParseWithChatMateID:self.chatMateId];
-    
 	/* Push Twitter VC
 	TwitterViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TwitterVC"];
 	tvc.searchString = @"SearchString";
