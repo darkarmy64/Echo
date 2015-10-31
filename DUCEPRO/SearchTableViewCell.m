@@ -21,7 +21,7 @@
 	CGContextSetLineWidth(context, 0.5);
 	CGContextMoveToPoint(context, self.trackNameLabel.frame.origin.x, HEIGHT);
 	CGContextAddLineToPoint(context, WIDTH, HEIGHT);
-	CGContextSetShadow(context, CGSizeZero, 3.f);
+	CGContextSetShadow(context, CGSizeZero, 2.f);
 	CGContextDrawPath(context, kCGPathStroke);
 }
 

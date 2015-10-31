@@ -33,14 +33,21 @@
 	[_trackSearchBar sizeToFit];
 	[_trackSearchBar setDelegate:self];
 	[_trackSearchBar setPlaceholder:@"Search"];
+	[_trackSearchBar setSearchBarStyle:UISearchBarStyleMinimal];
 	[_trackSearchBar setShowsCancelButton:YES];
-	
-	[_trackSearchBar becomeFirstResponder];
 	
 	[self.navigationItem setTitleView:_trackSearchBar];
 	
 //	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewControllerAnimated:completion:)];
 //	self.navigationItem.leftBarButtonItem = doneButton;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+	[self.trackSearchBar becomeFirstResponder];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+	[self.trackSearchBar resignFirstResponder];
 }
 
 - (void)cancelSearch {
@@ -159,7 +166,7 @@
                      for (NSDictionary * trackObject in tempMutableArray) {
                          RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
                          [_trackArray addObject:track];
-                         NSLog(@"TRACK NAME: %@",track.trackName);
+//                         NSLog(@"TRACK NAME: %@",track.trackName);
                      }
                      [_trackTableView reloadData];
                  } failure:^(NSError *error) {

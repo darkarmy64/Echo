@@ -24,6 +24,8 @@ static Rdio * _rdioInstance;
                                               delegate:nil];
     }
     return _rdioInstance;
+	
+	
 }
 
 
