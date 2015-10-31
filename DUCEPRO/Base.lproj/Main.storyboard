@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mJ2-Q6-LDf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WGb-Xy-X6N">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -539,6 +539,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0n-KQ-fBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2112" y="-283"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="eMZ-Nn-wBp">
+            <objects>
+                <viewController id="WGb-Xy-X6N" customClass="SplashViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0FU-Ev-bJB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uxu-PP-jva"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xgy-tJ-eCG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAp-kx-dke">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEl-aq-lgN">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oEl-aq-lgN" firstAttribute="top" secondItem="0FU-Ev-bJB" secondAttribute="bottom" id="4lt-lv-m8c"/>
+                            <constraint firstAttribute="trailing" secondItem="oEl-aq-lgN" secondAttribute="trailing" id="BVC-92-3wu"/>
+                            <constraint firstItem="Uxu-PP-jva" firstAttribute="top" secondItem="vAp-kx-dke" secondAttribute="bottom" constant="440" id="Der-iX-lqg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vAp-kx-dke" secondAttribute="trailing" constant="64" id="Eac-HG-w30"/>
+                            <constraint firstItem="oEl-aq-lgN" firstAttribute="leading" secondItem="vAp-kx-dke" secondAttribute="leading" id="Qp1-uC-QLF"/>
+                            <constraint firstItem="vAp-kx-dke" firstAttribute="top" secondItem="xgy-tJ-eCG" secondAttribute="top" id="igT-UF-quL"/>
+                            <constraint firstItem="oEl-aq-lgN" firstAttribute="bottom" secondItem="Uxu-PP-jva" secondAttribute="top" id="oZd-wz-PKs"/>
+                            <constraint firstItem="vAp-kx-dke" firstAttribute="leading" secondItem="xgy-tJ-eCG" secondAttribute="leading" id="wf4-rn-ylW"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="splashView" destination="oEl-aq-lgN" id="Tqe-fq-vo5"/>
+                        <segue destination="mJ2-Q6-LDf" kind="show" identifier="LoginPage" id="NyM-Z6-ULs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="czc-Wc-mZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="-362"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UGW-8v-WKA">

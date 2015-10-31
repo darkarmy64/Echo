@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1894E8431BE4FF2F00FCF89B /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1894E8421BE4FF2F00FCF89B /* SplashViewController.m */; };
+		1894E8471BE5000000FCF89B /* DarkArmy.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1894E8461BE5000000FCF89B /* DarkArmy.mov */; };
 		59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */; };
 		59A2F5491BE4B327008E026E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5451BE4B327008E026E /* Fabric.framework */; };
 		59A2F54A1BE4B327008E026E /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5461BE4B327008E026E /* TwitterKit.framework */; };
@@ -98,6 +100,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1894E8411BE4FF2F00FCF89B /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		1894E8421BE4FF2F00FCF89B /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		1894E8461BE5000000FCF89B /* DarkArmy.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = DarkArmy.mov; sourceTree = "<group>"; };
 		59A2F50D1BE45AC9008E026E /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		59A2F5451BE4B327008E026E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -280,6 +285,8 @@
 		595A73961BE3F7E200258408 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1894E8411BE4FF2F00FCF89B /* SplashViewController.h */,
+				1894E8421BE4FF2F00FCF89B /* SplashViewController.m */,
 				A3AFBAD91BE4D4A500BB9009 /* MNCChatMateListViewController.h */,
 				A3AFBADA1BE4D4A500BB9009 /* MNCChatMateListViewController.m */,
 				A3AFBAD61BE4D2B000BB9009 /* MNCLoginViewController.h */,
@@ -483,6 +490,7 @@
 		A3B426E31BE12BFC00102950 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1894E8461BE5000000FCF89B /* DarkArmy.mov */,
 				A3AFBAD51BE4D10E00BB9009 /* Config.h */,
 				A3B426F41BE12BFC00102950 /* Info.plist */,
 				A3EE4FE01BE2915B000AC203 /* tux_duce.png */,
@@ -654,6 +662,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3EE4FE11BE2915B000AC203 /* tux_duce.png in Resources */,
+				1894E8471BE5000000FCF89B /* DarkArmy.mov in Resources */,
 				59A2F55B1BE4B671008E026E /* SVProgressHUD.bundle in Resources */,
 				A3B426F31BE12BFC00102950 /* LaunchScreen.storyboard in Resources */,
 				A3B426F01BE12BFC00102950 /* Assets.xcassets in Resources */,
@@ -703,6 +712,7 @@
 				A37664921BE3A9B70044C962 /* SDWebImageDownloader.m in Sources */,
 				A37664951BE3A9B70044C962 /* SDWebImagePrefetcher.m in Sources */,
 				59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */,
+				1894E8431BE4FF2F00FCF89B /* SplashViewController.m in Sources */,
 				A33311D01BE3C3B200EA4A98 /* AFHTTPRequestOperation.m in Sources */,
 				A376649C1BE3A9B70044C962 /* UIView+WebCacheOperation.m in Sources */,
 				A33311D71BE3C3B200EA4A98 /* AFURLConnectionOperation.m in Sources */,
@@ -905,7 +915,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5137695-c602-4194-94d7-2d39caa457f3";
+				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
 			};
 			name = Debug;
 		};
@@ -939,7 +949,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e5137695-c602-4194-94d7-2d39caa457f3";
+				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
 			};
 			name = Release;
 		};

@@ -185,6 +185,7 @@
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+	[searchBar resignFirstResponder];
 	[self dismissViewControllerAnimated:YES completion:^{ }];
 }
 
