@@ -39,6 +39,8 @@
     BOOL _playing;
     BOOL _paused;
     BOOL _loggedIn;
+    
+    NSTimer *timer;
 
 }
 
@@ -79,7 +81,16 @@
 		[musicHeaderView setPlaying:NO];
 		[musicHeaderView.playPauseButton addTarget:self action:@selector(playPauseTapped:) forControlEvents:UIControlEventAllEvents];
 	}
+    
+//    [self refreshTrack];
+    
+//     timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerDidFire:) userInfo:nil repeats:YES];
+//    [timer fire];
 
+}
+
+-(void)timerDidFire:(NSTimer *)timer {
+    [self refreshTrack];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -97,15 +108,21 @@
 		});
 		[musicHeaderView setPlaying:NO];
     }
+    [timer invalidate];
+    timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerDidFire:) userInfo:nil repeats:YES];
+//    [self refreshTrack];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [_player.queue removeAll];
+    [timer invalidate];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageDelivered:) name:SINCH_MESSAGE_RECIEVED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageDelivered:) name:SINCH_MESSAGE_SENT object:nil];
+//    [self refreshTrack];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -177,16 +194,192 @@
 - (void)receiveMessage:(RdioTrack *)track {
     currentTrack = track;
     MSClient *client = [(AppDelegate *) [[UIApplication sharedApplication] delegate] client];
-    NSDictionary *rowOfData = @{@"recipient_id" : self.chatMateId, @"sender_id" : self.myUserId, @"current_track" : currentTrack.trackKey};
+    NSMutableDictionary *rowOfData = [NSMutableDictionary dictionaryWithDictionary:@{@"recipient_id" : self.chatMateId, @"sender_id" : self.myUserId, @"current_track" : currentTrack.trackKey, @"track_name" : currentTrack.trackName}];
     MSTable *database = [client tableWithName:@"SongStore"];
-    [database insert:rowOfData completion:^(NSDictionary *insertedItem, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-        } else {
-            NSLog(@"Item inserted, id: %@\n%@\n%@", [insertedItem objectForKey:@"recipient_id"], [insertedItem objectForKey:@"sender_id"], [insertedItem objectForKey:@"current_track"]);
+    
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"recipient_id == %@ AND sender_id == %@", self.chatMateId, self.myUserId];
+    
+    [database readWithPredicate:predicate completion:^(MSQueryResult *result, NSError *error) {
+        if(error) { // error is nil if no error occured
+            NSLog(@"ERROR %@", error);
         }
+        
+        else {
+            if(result.items.count > 0) {
+                // Update
+                NSMutableDictionary *newRowOfData = [result.items lastObject];
+                newRowOfData[@"track_name"] = currentTrack.trackName;
+                newRowOfData[@"current_track"] = currentTrack.trackKey;
+                [database update:newRowOfData completion:^(NSDictionary *item, NSError *error) {
+                    if (error) {
+                        NSLog(@"Error Update: %@", error);
+                    } else {
+                        NSLog(@"Item updated FTGOSE, id: %@\n%@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"], [item objectForKey:@"track_name"]);
+                    }
+//                     [self refreshTrack];
+                }];
+                
+            }
+            else {
+                // Add
+                [database insert:rowOfData completion:^(NSDictionary *insertedItem, NSError *error) {
+                    if (error) {
+                        NSLog(@"Error Insert: %@", error);
+                    } else {
+                        NSLog(@"Item inserted, id: %@\n%@\n%@\n%@", [insertedItem objectForKey:@"recipient_id"], [insertedItem objectForKey:@"sender_id"], [insertedItem objectForKey:@"current_track"], [insertedItem objectForKey:@"track_name"]);
+                    }
+//                     [self refreshTrack];
+                }];
+            }
+        }
+        
     }];
-    }
+    
+    
+    
+    NSMutableDictionary *rowOfDataX = [rowOfData mutableCopy];
+    rowOfDataX[@"sender_id"] = rowOfData[@"recipient_id"];
+    rowOfDataX[@"recipient_id"] = rowOfData[@"sender_id"];
+    
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"recipient_id == %@ AND sender_id == %@", self.myUserId, self.chatMateId];
+    
+    [database readWithPredicate:predicate2 completion:^(MSQueryResult *result, NSError *error) {
+        if(error) { // error is nil if no error occured
+            NSLog(@"ERROR %@", error);
+        }
+        
+        else {
+            if(result.items.count > 0) {
+                // Update
+                NSMutableDictionary *newRowOfData = [result.items lastObject];
+                newRowOfData[@"track_name"] = currentTrack.trackName;
+                newRowOfData[@"current_track"] = currentTrack.trackKey;
+                [database update:newRowOfData completion:^(NSDictionary *item, NSError *error) {
+                    if (error) {
+                        NSLog(@"Error Update 2: %@", error);
+                    } else {
+                        NSLog(@"Item updated FTGOSE, id: %@\n%@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"], [item objectForKey:@"track_name"]);
+                    }
+                    [self refreshTrack];
+                }];
+                
+            }
+            else {
+                // Add
+                [database insert:rowOfDataX completion:^(NSDictionary *insertedItem, NSError *error) {
+                    if (error) {
+                        NSLog(@"Error Insert 2: %@", error);
+                    } else {
+                        NSLog(@"Item inserted, id: %@\n%@\n%@\n%@", [insertedItem objectForKey:@"recipient_id"], [insertedItem objectForKey:@"sender_id"], [insertedItem objectForKey:@"current_track"], [insertedItem objectForKey:@"track_name"]);
+                    }
+                    [self refreshTrack];
+                }];
+            }
+        }
+        
+    }];
+     
+    
+
+    
+//    [database insert:rowOfData completion:^(NSDictionary *insertedItem, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error: %@", error);
+//        } else {
+//            NSLog(@"Item inserted, id: %@\n%@\n%@\n%@", [insertedItem objectForKey:@"recipient_id"], [insertedItem objectForKey:@"sender_id"], [insertedItem objectForKey:@"current_track"], [insertedItem objectForKey:@"track_name"]);
+//        }
+//    }];
+    
+}
+
+- (void)refreshTrack
+{
+    MSClient *client = [(AppDelegate *) [[UIApplication sharedApplication] delegate] client];
+    MSTable *database = [client tableWithName:@"SongStore"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"recipient_id == %@ AND sender_id == %@", self.myUserId, self.chatMateId];
+    [database readWithPredicate:predicate completion:^(MSQueryResult *result, NSError *error) {
+        if(error) { // error is nil if no error occured
+            NSLog(@"ERROR %@", error);
+        } else {
+            NSDictionary *item = [result.items lastObject];
+            NSLog(@"Refreshing item: %@\n%@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"], [item objectForKey:@"track_name"]);
+            
+            if (!(item == nil || [[item objectForKey:@"track_name"] isKindOfClass:[NSNull class]]))
+            {
+                [_player stop];
+                [_player.queue removeAll];
+                [_player.queue add:item];
+                
+                [_rdio callAPIMethod:@"search" withParameters:@{@"query":[item objectForKey:@"track_name"],
+                                                                @"types":@"Track"}
+                             success:^(NSDictionary *resultx) {
+                                 NSMutableArray * tempMutableArray = [NSMutableArray new];
+                                 tempMutableArray = [resultx objectForKey:@"results"];
+                                 for (NSDictionary * trackObject in tempMutableArray) {
+                                     RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
+                                     if ([track.trackKey isEqualToString:[item objectForKey:@"current_track"]] ) {
+                                         NSLog(@"Updating track info From OtherUser...");
+                                         currentTrack = track;
+                                         [self viewDidAppear:YES];
+                                     }
+                                 }
+                             } failure:^(NSError *error) {
+                                 
+                             }];
+                
+            }
+            /*
+            for(NSDictionary *item in result.items) { // items is NSArray of records that match query
+                NSLog(@"Todo Item: %@\n%@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"], [item objectForKey:@"track_name"]);
+                if (item == nil || [[item objectForKey:@"track_name"] isKindOfClass:[NSNull class]])
+                {
+                    break;
+                }
+                else if ([[item objectForKey:@"current_track"] isEqualToString:currentTrack.trackKey])
+                {
+                    break;
+                }
+                else
+                {
+                    // if currently present track in the app is not the same as the one on the DB
+                    // The other user/receipent has changed the track
+                    [_player stop];
+                    [_player.queue removeAll];
+                    [_player.queue add:item];
+                    [_rdio callAPIMethod:@"search" withParameters:@{@"query":[item objectForKey:@"track_name"],
+                                                                    @"types":@"Track"}
+                                 success:^(NSDictionary *resultx) {
+                                     NSMutableArray * tempMutableArray = [NSMutableArray new];
+                                     tempMutableArray = [resultx objectForKey:@"results"];
+                                     for (NSDictionary * trackObject in tempMutableArray) {
+                                         RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
+                                         if ([track.trackKey isEqualToString:[item objectForKey:@"current_track"]] ) {
+                                             NSLog(@"Updating track info...");
+                                             currentTrack = track;
+                                             [self viewDidAppear:YES];
+                                         }
+                                     }
+                                 } failure:^(NSError *error) {
+                                     
+                                 }];
+                }
+            }
+             */
+        }
+
+    }];
+    
+//    [database readWithCompletion:^(MSQueryResult *result, NSError *error) {
+//        if(error) { // error is nil if no error occured
+//            NSLog(@"ERROR %@", error);
+//        } else {
+//            for(NSDictionary *item in result.items) { // items is NSArray of records that match query
+//                NSLog(@"Todo Item: %@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"]);
+//            }
+//        }
+//    }];
+    
+}
 
 - (IBAction)openSearchView:(id)sender {
     
@@ -220,11 +413,14 @@
             }
             [weakSelf.myTableView reloadData];  // Refresh the table view
             [weakSelf scrollTableToBottom];  // Scroll to the bottom of the table view
+            [self refreshTrack];
         } else {
             NSLog(@"Error: %@", error.description);
         }
     }];
 }
+
+
 
 - (void)sendMessage:(id)sender
 {
