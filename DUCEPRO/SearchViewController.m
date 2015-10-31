@@ -116,9 +116,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RdioTrack * track = [_trackArray objectAtIndex:indexPath.row];
     [self.delegate receiveMessage:track];
-
-//    [[NSUserDefaults standardUserDefaults] setObject:[_trackArray objectAtIndex:indexPath.row] forKey:@"CURRENT_TRACK"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
