@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 
+#import <Fabric/Fabric.h>
+#import <TwitterKit/TwitterKit.h>
+
+
 @interface AppDelegate ()
 
 @end
@@ -33,7 +37,22 @@ static Rdio * _rdioInstance;
     // Override point for customization after application launch.
     
 //    Rdio *r = [AppDelegate sharedRdio];
-    
+	
+	[Fabric with:@[[Twitter class]]];
+	
+	[[UINavigationBar appearance] setBackgroundColor:GLOBAL_BACK_COLOR];
+	[[UINavigationBar appearance] setBarTintColor:GLOBAL_BACK_COLOR];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: GLOBAL_TINT_COLOR}];
+	
+	[[UISearchBar appearance] setTintColor:GLOBAL_TINT_COLOR];
+	
+	[[UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setDefaultTextAttributes:@{NSForegroundColorAttributeName: GLOBAL_TINT_COLOR, NSFontAttributeName: [UIFont systemFontOfSize:13.f]}];
+	
+	[SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+	[SVProgressHUD setBackgroundColor:GLOBAL_BACK_COLOR];
+	[SVProgressHUD setForegroundColor:GLOBAL_TINT_COLOR];
+	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
+	
     return YES;
 }
 

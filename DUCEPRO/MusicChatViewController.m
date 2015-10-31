@@ -14,6 +14,7 @@
 #import "SearchViewController.h"
 #import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
+#import "TwitterViewController.h"
 
 @interface MusicChatViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,RdioDelegate,RDPlayerDelegate>
 {
@@ -44,6 +45,13 @@
     _rdio = [AppDelegate sharedRdio];
     [_rdio setDelegate:self];
     _player = [_rdio preparePlayerWithDelegate:self];
+	
+	/* Push Twitter VC
+	TwitterViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TwitterVC"];
+	tvc.searchString = @"SearchString";
+	[self.navigationController pushViewController:tvc animated:YES];
+	 */
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated {

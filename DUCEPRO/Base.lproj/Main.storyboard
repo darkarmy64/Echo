@@ -128,7 +128,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="60" id="kM8-Wz-d7r" customClass="SearchTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="320" height="60"/>
@@ -148,14 +148,14 @@
                                             <rect key="frame" x="80" y="8" width="232" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bkf-7N-KWF">
                                             <rect key="frame" x="80" y="34" width="232" height="18"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.2274509804" green="0.31372549020000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -173,6 +173,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="trackAlbumLabel" destination="Bkf-7N-KWF" id="gyT-Tk-qsE"/>
                                     <outlet property="trackCoverImageView" destination="CdI-9f-6sL" id="UaA-QA-elM"/>
@@ -194,6 +195,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ea-7S-sfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2350" y="354"/>
+        </scene>
+        <!--Twitter View Controller-->
+        <scene sceneID="3Ik-8Q-7bR">
+            <objects>
+                <viewController storyboardIdentifier="TwitterVC" id="wR4-Fw-f1U" customClass="TwitterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zUJ-wf-ihM"/>
+                        <viewControllerLayoutGuide type="bottom" id="lHX-lP-ivd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sdc-SO-hFs" customClass="UITableView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pFF-Dy-iIl"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tel-cS-9Tm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2587" y="-283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="27j-7X-vmG">
@@ -234,7 +256,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IVp-rk-pEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="354"/>
+            <point key="canvasLocation" x="960" y="354"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A4z-6h-Csi">
+            <objects>
+                <navigationController storyboardIdentifier="TwitterViewNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="abm-Dt-LuF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5ye-jK-K5I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wR4-Fw-f1U" kind="relationship" relationship="rootViewController" id="IMs-pV-jcI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0n-KQ-fBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2112" y="-283"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -34,6 +34,9 @@
 	[_trackSearchBar setDelegate:self];
 	[_trackSearchBar setPlaceholder:@"Search"];
 	[_trackSearchBar setSearchBarStyle:UISearchBarStyleMinimal];
+	[_trackSearchBar setTintColor:GLOBAL_TINT_COLOR];
+	[_trackSearchBar setBarTintColor:GLOBAL_TINT_COLOR];
+	[_trackSearchBar setKeyboardAppearance:UIKeyboardAppearanceDark];
 	[_trackSearchBar setShowsCancelButton:YES];
 	
 	[self.navigationItem setTitleView:_trackSearchBar];
@@ -46,7 +49,7 @@
 	[self.trackSearchBar becomeFirstResponder];
 }
 
--(void)viewWillDisappear:(BOOL)animated {
+-(void)viewDidDisappear:(BOOL)animated {
 	[self.trackSearchBar resignFirstResponder];
 }
 
