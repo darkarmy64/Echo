@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WGb-Xy-X6N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WGb-Xy-X6N">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -383,6 +383,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="barTintColor" red="0.066666666669999999" green="0.066666666669999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -653,13 +654,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0go-w9-Nxp">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXq-oy-9cT">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="32" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pv6-J1-ghC">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                                 <animations/>
                                                 <prototypes>
                                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageListPrototypeCell" rowHeight="32" id="3pb-hV-F7N" customClass="MNCChatMessageCell">
@@ -724,7 +725,7 @@
                                                 </connections>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtf-uU-Z64">
-                                                <rect key="frame" x="248" y="460" width="72" height="44"/>
+                                                <rect key="frame" x="248" y="524" width="72" height="44"/>
                                                 <animations/>
                                                 <color key="backgroundColor" red="0.3411764706" green="0.16862745100000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -742,7 +743,7 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-NA-woc">
-                                                <rect key="frame" x="8" y="460" width="240" height="44"/>
+                                                <rect key="frame" x="8" y="524" width="240" height="44"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="5AG-gu-pHo"/>
@@ -766,7 +767,7 @@
                                             <constraint firstAttribute="trailing" secondItem="wtf-uU-Z64" secondAttribute="trailing" id="a4l-om-ryE"/>
                                             <constraint firstAttribute="width" secondItem="Pv6-J1-ghC" secondAttribute="width" id="d8u-3A-Rat"/>
                                             <constraint firstItem="wtf-uU-Z64" firstAttribute="bottom" secondItem="vxi-NA-woc" secondAttribute="bottom" id="fcY-8X-jX8"/>
-                                            <constraint firstItem="vxi-NA-woc" firstAttribute="top" secondItem="Pv6-J1-ghC" secondAttribute="bottom" constant="1" id="hLM-to-QJ9"/>
+                                            <constraint firstItem="vxi-NA-woc" firstAttribute="top" secondItem="Pv6-J1-ghC" secondAttribute="bottom" id="hLM-to-QJ9"/>
                                             <constraint firstAttribute="centerX" secondItem="Pv6-J1-ghC" secondAttribute="centerX" id="p1F-JT-EeJ"/>
                                         </constraints>
                                         <variation key="default">
@@ -785,6 +786,9 @@
                                     <constraint firstItem="RXq-oy-9cT" firstAttribute="centerY" secondItem="0go-w9-Nxp" secondAttribute="centerY" id="kGW-4S-qIr"/>
                                     <constraint firstItem="RXq-oy-9cT" firstAttribute="centerX" secondItem="0go-w9-Nxp" secondAttribute="centerX" id="xFh-IO-9Iw"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="mUy-pO-XL4" id="Rdd-r7-xht"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <animations/>
@@ -793,7 +797,7 @@
                             <constraint firstItem="0go-w9-Nxp" firstAttribute="leading" secondItem="ScC-V6-HQW" secondAttribute="leading" id="IX9-jC-fDa"/>
                             <constraint firstItem="0go-w9-Nxp" firstAttribute="bottom" secondItem="UNm-a4-s4f" secondAttribute="top" id="RyU-if-tWw"/>
                             <constraint firstAttribute="trailing" secondItem="0go-w9-Nxp" secondAttribute="trailing" id="pBC-XR-7HM"/>
-                            <constraint firstItem="0go-w9-Nxp" firstAttribute="top" secondItem="55x-c9-v7A" secondAttribute="bottom" id="x2s-zj-UGw"/>
+                            <constraint firstItem="0go-w9-Nxp" firstAttribute="top" secondItem="55x-c9-v7A" secondAttribute="bottom" constant="-64" id="x2s-zj-UGw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WSX-bj-p7v">
@@ -817,7 +821,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XdC-z6-o7n"/>
+        <segue reference="gll-fS-2Yz"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

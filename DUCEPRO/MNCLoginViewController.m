@@ -32,6 +32,12 @@
 	
 	[self.usernameField becomeFirstResponder];
 	
+	// Remove this later
+	self.usernameField.text = @"shorteswag";
+	self.passwordField.text = @"echo";
+	
+	self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
+	
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"LoginSegue"]) {
@@ -75,6 +81,9 @@
 }
 
 - (IBAction)login:(id)sender {
+	
+	[SVProgressHUD showWithStatus:@"Loading..."];
+	
     __weak typeof(self) weakSelf = self;
     [PFUser logInWithUsernameInBackground:self.usernameField.text
                                  password:self.passwordField.text
@@ -96,6 +105,9 @@
              weakSelf.promptLabel.text = [error userInfo][@"error"];
              weakSelf.promptLabel.hidden = NO;
          }
+		 
+		 [SVProgressHUD dismiss];
+		 
      }];
 }
 

@@ -304,12 +304,9 @@
 		595A73961BE3F7E200258408 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1894E8411BE4FF2F00FCF89B /* SplashViewController.h */,
-				1894E8421BE4FF2F00FCF89B /* SplashViewController.m */,
-				A3AFBAD91BE4D4A500BB9009 /* MNCChatMateListViewController.h */,
-				A3AFBADA1BE4D4A500BB9009 /* MNCChatMateListViewController.m */,
-				A3AFBAD61BE4D2B000BB9009 /* MNCLoginViewController.h */,
-				A3AFBAD71BE4D2B000BB9009 /* MNCLoginViewController.m */,
+				59A2F5AF1BE57966008E026E /* Splash */,
+				59A2F5AE1BE5795F008E026E /* Chat View */,
+				59A2F5AD1BE57959008E026E /* Login */,
 				595A73981BE3F81200258408 /* Main */,
 				595A739A1BE3F82000258408 /* Search */,
 				595A73991BE3F81A00258408 /* Music Chat */,
@@ -323,10 +320,8 @@
 			children = (
 				A3B426EC1BE12BFC00102950 /* Main.storyboard */,
 				A3B426F11BE12BFC00102950 /* LaunchScreen.storyboard */,
-				A3AFBADF1BE4E66300BB9009 /* MNCChatMessageCell.h */,
-				A3AFBAE01BE4E66300BB9009 /* MNCChatMessageCell.m */,
-				59A2F5981BE521AF008E026E /* CurvedTextField.h */,
-				59A2F5991BE521AF008E026E /* CurvedTextField.m */,
+				59A2F5B11BE57974008E026E /* Chat Cell */,
+				59A2F5B01BE5796C008E026E /* Curve Text Field */,
 				59A2F5A01BE52517008E026E /* Music Header View */,
 				59A2F5101BE45ACD008E026E /* Search Table View Cell */,
 			);
@@ -414,6 +409,51 @@
 				59A2F5A41BE52578008E026E /* RSPlayPauseButton.m */,
 			);
 			path = RSPlayPauseButton;
+			sourceTree = "<group>";
+		};
+		59A2F5AD1BE57959008E026E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A3AFBAD61BE4D2B000BB9009 /* MNCLoginViewController.h */,
+				A3AFBAD71BE4D2B000BB9009 /* MNCLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		59A2F5AE1BE5795F008E026E /* Chat View */ = {
+			isa = PBXGroup;
+			children = (
+				A3AFBAD91BE4D4A500BB9009 /* MNCChatMateListViewController.h */,
+				A3AFBADA1BE4D4A500BB9009 /* MNCChatMateListViewController.m */,
+			);
+			name = "Chat View";
+			sourceTree = "<group>";
+		};
+		59A2F5AF1BE57966008E026E /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				1894E8411BE4FF2F00FCF89B /* SplashViewController.h */,
+				1894E8421BE4FF2F00FCF89B /* SplashViewController.m */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
+		59A2F5B01BE5796C008E026E /* Curve Text Field */ = {
+			isa = PBXGroup;
+			children = (
+				59A2F5981BE521AF008E026E /* CurvedTextField.h */,
+				59A2F5991BE521AF008E026E /* CurvedTextField.m */,
+			);
+			name = "Curve Text Field";
+			sourceTree = "<group>";
+		};
+		59A2F5B11BE57974008E026E /* Chat Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A3AFBADF1BE4E66300BB9009 /* MNCChatMessageCell.h */,
+				A3AFBAE01BE4E66300BB9009 /* MNCChatMessageCell.m */,
+			);
+			name = "Chat Cell";
 			sourceTree = "<group>";
 		};
 		A300475A1BE286C000EE0A85 /* Model */ = {
@@ -966,7 +1006,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
+				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
 			};
 			name = Debug;
 		};
@@ -1000,7 +1040,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
+				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
 			};
 			name = Release;
 		};

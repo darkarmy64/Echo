@@ -48,23 +48,26 @@
 
 
 - (void)retrieveChatMatesFromParse {
-    [self.chatMatesArray removeAllObjects];
-    
-    PFQuery *query = [PFUser query];
-    [query orderByAscending:@"username"];
-    [query whereKey:@"username" notEqualTo:self.myUserId];
-    
-    __weak typeof(self) weakSelf = self;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *chatMateArray, NSError *error) {
-        if (!error) {
-            for (int i = 0; i < [chatMateArray count]; i++) {
-                [weakSelf.chatMatesArray addObject:chatMateArray[i][@"username"]];
-            }
-            [weakSelf.tableView reloadData];
-        } else {
-            NSLog(@"Error: %@", error.description);
-        }
-    }];
+	//    [self.chatMatesArray removeAllObjects];
+	
+	PFQuery *query = [PFUser query];
+	[query orderByAscending:@"username"];
+	[query whereKey:@"username" notEqualTo:self.myUserId];
+	
+	//    __weak typeof(self) weakSelf = self;
+	[query findObjectsInBackgroundWithBlock:^(NSArray *chatMateArray, NSError *error) {
+		if (!error) {
+			NSMutableArray *chatMatesArrayNew = [[NSMutableArray alloc] init];
+			for (int i = 0; i < [chatMateArray count]; i++) {
+				[chatMatesArrayNew addObject:chatMateArray[i][@"username"]];
+			}
+			//            [weakSelf.tableView reloadData];
+			self.chatMatesArray = [NSMutableArray arrayWithArray:chatMatesArrayNew];
+			[self.tableView reloadData];
+		} else {
+			NSLog(@"Error: %@", error.description);
+		}
+	}];
 }
 
 

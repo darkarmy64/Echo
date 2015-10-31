@@ -40,7 +40,7 @@
 	[_trackSearchBar setShowsCancelButton:YES];
 	
 	[self.navigationItem setTitleView:_trackSearchBar];
-	
+
 //	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewControllerAnimated:completion:)];
 //	self.navigationItem.leftBarButtonItem = doneButton;
 }
@@ -50,10 +50,12 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
+	[self resignFirstResponder];
 	[self.trackSearchBar resignFirstResponder];
 }
 
 - (void)cancelSearch {
+	[self resignFirstResponder];
     [self.trackSearchBar resignFirstResponder];
 }
 
@@ -68,8 +70,9 @@
 
 #pragma mark - Scroll view delegate
 
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	[self.trackSearchBar resignFirstResponder];
+	[self resignFirstResponder];
 }
 
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -178,11 +181,13 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
+	[self resignFirstResponder];
     // You can write search code Here
 }
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
 	[searchBar resignFirstResponder];
+	[self resignFirstResponder];
 	[self dismissViewControllerAnimated:YES completion:^{ }];
 }
 

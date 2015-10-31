@@ -59,6 +59,8 @@ static Rdio * _rdioInstance;
 	[SVProgressHUD setForegroundColor:GLOBAL_TINT_COLOR];
 	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
 	
+	[[UINavigationBar appearance] setBarStyle:UIStatusBarStyleLightContent];
+	
     return YES;
 }
 

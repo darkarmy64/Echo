@@ -69,6 +69,7 @@
 	tvc.searchString = @"SearchString";
 	[self.navigationController pushViewController:tvc animated:YES];
 	 */
+	
     // Automatically determine the height of each self-sizing tabel view cells - an iOS 8 feature
     self.myTableView.rowHeight = UITableViewAutomaticDimension;     /* add this line */
     [self retrieveMessagesFromParseWithChatMateID:self.chatMateId];
@@ -104,6 +105,8 @@
 			UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentTrack.trackIcon]]];
 			dispatch_async(dispatch_get_main_queue(), ^{
 				musicHeaderView.albumCoverImageView.image = image;
+				[self scrollTableToBottom];
+				[self.scrollView scrollRectToVisible:CGRectMake(0, self.scrollView.frame.size.height - 44, SWidth, 44) animated:YES];
 			});
 		});
 		[musicHeaderView setPlaying:NO];
@@ -122,6 +125,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageDelivered:) name:SINCH_MESSAGE_RECIEVED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageDelivered:) name:SINCH_MESSAGE_SENT object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWasShown:)
+												 name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillBeHidden:)
+												 name:UIKeyboardWillHideNotification object:nil];
 //    [self refreshTrack];
 }
 
@@ -317,6 +326,11 @@
                                  tempMutableArray = [resultx objectForKey:@"results"];
                                  for (NSDictionary * trackObject in tempMutableArray) {
                                      RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
+									 if ([track.trackKey isEqualToString:currentTrack.trackKey]) {
+										 // Already Playing...
+										 NSLog(@"Already playing song from other user.");
+										 break;
+									 }
                                      if ([track.trackKey isEqualToString:[item objectForKey:@"current_track"]] ) {
                                          NSLog(@"Updating track info From OtherUser...");
                                          currentTrack = track;
@@ -469,28 +483,32 @@
     
     MNCChatMessage *chatMessage = self.messageArray[indexPath.row];
     
-    if ([[chatMessage senderId] isEqualToString:self.myUserId]) {
-        // If the message was sent by myself
-        messageCell.chatMateMessageLabel.text = @"";
-        messageCell.myMessageLabel.text = chatMessage.text;
-    } else {
-        // If the message was sent by the chat mate
-        messageCell.myMessageLabel.text = @"";
-        messageCell.chatMateMessageLabel.text = chatMessage.text;
-    }
+	if ([[chatMessage senderId] isEqualToString:self.myUserId]) {
+		// If the message was sent by myself
+		messageCell.chatMateMessageLabel.text = @"";
+		messageCell.myMessageLabel.text = [NSString stringWithFormat:@"  %@  ", chatMessage.text];
+	} else {
+		// If the message was sent by the chat mate
+		messageCell.myMessageLabel.text = @"";
+		messageCell.chatMateMessageLabel.text = [NSString stringWithFormat:@"  %@  ", chatMessage.text];
+	}
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-//    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
-//    trackImageView = [[UIImageView alloc] initWithFrame:headerView.frame];
-    singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseTapped:)];
-    singleTap.numberOfTapsRequired = 1;
-    singleTap.numberOfTouchesRequired = 1;
+	
+	//	if (_player.state == RDPlayerStateStopped || currentTrack == nil)
+	//		return nil;
+	
+	//    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
+	//    trackImageView = [[UIImageView alloc] initWithFrame:headerView.frame];
+	singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseTapped:)];
+	singleTap.numberOfTapsRequired = 1;
+	singleTap.numberOfTouchesRequired = 1;
 	singleTap.cancelsTouchesInView = NO;
-//    [headerView addSubview:trackImageView];
-//    [headerView addGestureRecognizer:singleTap];
-//    return headerView;
+	//    [headerView addSubview:trackImageView];
+	//    [headerView addGestureRecognizer:singleTap];
+	//    return headerView;
 	
 	if (!musicHeaderView) {
 		musicHeaderView = [[[NSBundle mainBundle] loadNibNamed:@"MusicHeaderView" owner:self options:nil] firstObject];
@@ -500,22 +518,21 @@
 		[musicHeaderView.playPauseButton addTarget:self action:@selector(playPauseTapped:) forControlEvents:UIControlEventAllEvents];
 	}
 	
-//	musicHeaderView.albumCoverImageView.image = [UIImage imageNamed:@"MX.jpg"];
-//	musicHeaderView.albumCoverImageView = trackImageView;
+	//	musicHeaderView.albumCoverImageView.image = [UIImage imageNamed:@"MX.jpg"];
+	//	musicHeaderView.albumCoverImageView = trackImageView;
 	
 	[musicHeaderView addGestureRecognizer:singleTap];
 	
 	return musicHeaderView;
-	
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//	CGFloat offsety = self.myTableView.contentOffset.y;
-//	CGFloat minHeight = 120.f;
-//    return MAX(minHeight, SWidth - offsety);
-	if (![currentTrack.trackName isEqualToString:@""])
-		return SWidth;
-	return 0;
+	//	CGFloat offsety = self.myTableView.contentOffset.y;
+	//	CGFloat minHeight = 120.f;
+	//    return MAX(minHeight, SWidth - offsety);
+	//	if (_player.state == RDPlayerStateStopped || currentTrack == nil)
+	//		return 0;
+	return SWidth;
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -528,7 +545,54 @@
 //	[musicHeaderView layoutSubviews];
 //	[self.myTableView reloadData];
 //	[self.myTableView endUpdates];
+	if (scrollView == self.scrollView)
+	{
+		/* Handle instances when the main scroll view is already at the bottom */
+		if (   scrollView.contentOffset.y
+			== scrollView.contentSize.height - scrollView.bounds.size.height)
+		{
+			/* Stop scrolling the main scroll view and start scrolling the
+			 * inner scroll view
+			 */
+			self.myTableView.scrollEnabled = YES;
+			self.scrollView.scrollEnabled = NO;
+		}
+		else
+		{
+			/* Start scrolling the main scroll view and stop scrolling the
+			 * inner scroll view
+			 */
+			self.myTableView.scrollEnabled = NO;
+			self.scrollView.scrollEnabled = YES;
+		}
+	}
+	else if (scrollView == self.myTableView)
+	{
+		/* Handle instances when the inner scroll view is already at the top */
+		if (self.myTableView.contentOffset.y == 0)
+		{
+			/* Stop scrolling the inner scroll view and start scrolling the
+			 * main scroll view
+			 */
+			self.myTableView.scrollEnabled = YES;
+			self.scrollView.scrollEnabled = NO;
+		}
+		else
+		{
+			/* Start scrolling the inner scroll view and stop scrolling the
+			 * main scroll view
+			 */
+			self.myTableView.scrollEnabled = YES;
+			self.scrollView.scrollEnabled = NO;
+		}
+	}
 }
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	[self.activeTextField resignFirstResponder];
+	[self resignFirstResponder];
+}
+
 
 # pragma mark Music Player
 - (IBAction)playPauseTapped:(id)sender
