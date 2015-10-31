@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1894E8431BE4FF2F00FCF89B /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1894E8421BE4FF2F00FCF89B /* SplashViewController.m */; };
-		1894E8471BE5000000FCF89B /* DarkArmy.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1894E8461BE5000000FCF89B /* DarkArmy.mov */; };
+		18F5B3B21BE503F00046EDA8 /* DarkArmy.mov in Resources */ = {isa = PBXBuildFile; fileRef = 18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */; };
 		59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */; };
 		59A2F5491BE4B327008E026E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5451BE4B327008E026E /* Fabric.framework */; };
 		59A2F54A1BE4B327008E026E /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5461BE4B327008E026E /* TwitterKit.framework */; };
@@ -102,7 +102,7 @@
 /* Begin PBXFileReference section */
 		1894E8411BE4FF2F00FCF89B /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		1894E8421BE4FF2F00FCF89B /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
-		1894E8461BE5000000FCF89B /* DarkArmy.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = DarkArmy.mov; sourceTree = "<group>"; };
+		18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = DarkArmy.mov; sourceTree = "<group>"; };
 		59A2F50D1BE45AC9008E026E /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		59A2F5451BE4B327008E026E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -490,7 +490,7 @@
 		A3B426E31BE12BFC00102950 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1894E8461BE5000000FCF89B /* DarkArmy.mov */,
+				18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */,
 				A3AFBAD51BE4D10E00BB9009 /* Config.h */,
 				A3B426F41BE12BFC00102950 /* Info.plist */,
 				A3EE4FE01BE2915B000AC203 /* tux_duce.png */,
@@ -624,7 +624,6 @@
 				TargetAttributes = {
 					A3B426DF1BE12BFC00102950 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = M2TZJK2U6H;
 					};
 					A3B426F81BE12BFC00102950 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -662,7 +661,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3EE4FE11BE2915B000AC203 /* tux_duce.png in Resources */,
-				1894E8471BE5000000FCF89B /* DarkArmy.mov in Resources */,
+				18F5B3B21BE503F00046EDA8 /* DarkArmy.mov in Resources */,
 				59A2F55B1BE4B671008E026E /* SVProgressHUD.bundle in Resources */,
 				A3B426F31BE12BFC00102950 /* LaunchScreen.storyboard in Resources */,
 				A3B426F01BE12BFC00102950 /* Assets.xcassets in Resources */,
@@ -915,7 +914,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Debug;
 		};
@@ -949,7 +948,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Release;
 		};
