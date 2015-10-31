@@ -49,12 +49,12 @@
 	[self.trackSearchBar becomeFirstResponder];
 }
 
--(void)viewDidDisappear:(BOOL)animated {
+-(void)viewWillDisappear:(BOOL)animated {
 	[self.trackSearchBar resignFirstResponder];
 }
 
 - (void)cancelSearch {
-    
+    [self.trackSearchBar resignFirstResponder];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

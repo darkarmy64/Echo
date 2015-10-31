@@ -9,6 +9,10 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
+#define SWidth self.view.bounds.size.width
+#define SHeight self.view.bounds.size.height
+
+
 #import "MusicChatViewController.h"
 #import "RdioTrack.h"
 #import "SearchViewController.h"
@@ -16,6 +20,7 @@
 #import "AppDelegate.h"
 #import "TwitterViewController.h"
 #import "MNCChatMessageCell.h"
+#import "MusicHeaderView.h"
 
 
 @interface MusicChatViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,RdioDelegate,RDPlayerDelegate,UITextFieldDelegate>
@@ -25,6 +30,8 @@
     UITapGestureRecognizer * singleTap;
     UITapGestureRecognizer * doubleTap;
     NSString * currentTrackName;
+	
+	MusicHeaderView *musicHeaderView;
     
     RDPlayer *_player;
     Rdio *_rdio;
@@ -66,6 +73,12 @@
     UITapGestureRecognizer *tapTableGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView)];
     [self.myTableView addGestureRecognizer:tapTableGR];
     [self registerForKeyboardNotifications];
+	
+	if (!musicHeaderView) {
+		musicHeaderView = [[[NSBundle mainBundle] loadNibNamed:@"MusicHeaderView" owner:self options:nil] firstObject];
+		[musicHeaderView setPlaying:NO];
+		[musicHeaderView.playPauseButton addTarget:self action:@selector(playPauseTapped:) forControlEvents:UIControlEventAllEvents];
+	}
 
 }
 
@@ -73,7 +86,16 @@
 
     if (![currentTrack.trackName isEqualToString:@""]) {
         NSLog(@"CURRENT NAME : %@",currentTrack.trackName);
-        trackImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentTrack.trackIcon]]];
+//        trackImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentTrack.trackIcon]]];
+		musicHeaderView.songNameLabel.text = currentTrack.trackName;
+		musicHeaderView.artistAlbumLabel.text = [NSString stringWithFormat:@"%@ | %@", currentTrack.trackArtist, currentTrack.trackAlbum];
+		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+			UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:currentTrack.trackIcon]]];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				musicHeaderView.albumCoverImageView.image = image;
+			});
+		});
+		[musicHeaderView setPlaying:NO];
     }
 }
 
@@ -88,6 +110,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated
 {
+	[self.activeTextField resignFirstResponder];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -253,20 +276,52 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
-    trackImageView = [[UIImageView alloc] initWithFrame:headerView.frame];
+//    UIView * headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
+//    trackImageView = [[UIImageView alloc] initWithFrame:headerView.frame];
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(playPauseTapped:)];
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
-    [headerView addSubview:trackImageView];
-    [headerView addGestureRecognizer:singleTap];
-    return headerView;
-    
+	singleTap.cancelsTouchesInView = NO;
+//    [headerView addSubview:trackImageView];
+//    [headerView addGestureRecognizer:singleTap];
+//    return headerView;
+	
+	if (!musicHeaderView) {
+		musicHeaderView = [[[NSBundle mainBundle] loadNibNamed:@"MusicHeaderView" owner:self options:nil] firstObject];
+		[musicHeaderView setFrame:CGRectMake(0, 0, SWidth, SWidth)];
+		[musicHeaderView setPlaying:NO];
+		musicHeaderView.albumCoverImageView.clipsToBounds = YES;
+		[musicHeaderView.playPauseButton addTarget:self action:@selector(playPauseTapped:) forControlEvents:UIControlEventAllEvents];
+	}
+	
+//	musicHeaderView.albumCoverImageView.image = [UIImage imageNamed:@"MX.jpg"];
+//	musicHeaderView.albumCoverImageView = trackImageView;
+	
+	[musicHeaderView addGestureRecognizer:singleTap];
+	
+	return musicHeaderView;
+	
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return self.view.frame.size.width;
+//	CGFloat offsety = self.myTableView.contentOffset.y;
+//	CGFloat minHeight = 120.f;
+//    return MAX(minHeight, SWidth - offsety);
+	if (![currentTrack.trackName isEqualToString:@""])
+		return SWidth;
+	return 0;
+}
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	[self.activeTextField resignFirstResponder];
+//	CGFloat offsety = self.myTableView.contentOffset.y;
+//	CGFloat minHeight = 120.f;
+//	[self.myTableView beginUpdates];
+//	[musicHeaderView setFrame:CGRectMake(0, 64, SWidth, MAX(minHeight, SWidth - offsety))];
+//	[musicHeaderView layoutIfNeeded];
+//	[musicHeaderView layoutSubviews];
+//	[self.myTableView reloadData];
+//	[self.myTableView endUpdates];
 }
 
 # pragma mark Music Player
@@ -277,9 +332,15 @@
         // Nothing's been "played" yet, so queue up and play something
         [_player.queue add:currentTrack.trackKey];
         [_player playFromQueue:0];
+		[musicHeaderView setPlaying:YES];
+		musicHeaderView.playState = PlayStatePaused;
     } else {
         // Otherwise, just toggle play/pause
         [_player togglePause];
+		if (musicHeaderView.playState == PlayStatePaused)
+			[musicHeaderView setPlaying:YES];
+		else
+			[musicHeaderView setPlaying:NO];
     }
 }
 

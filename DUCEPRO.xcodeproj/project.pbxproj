@@ -19,6 +19,12 @@
 		59A2F55B1BE4B671008E026E /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F5551BE4B671008E026E /* SVProgressHUD.bundle */; };
 		59A2F55C1BE4B671008E026E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5571BE4B671008E026E /* SVProgressHUD.m */; };
 		59A2F55D1BE4B671008E026E /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5591BE4B671008E026E /* SVRadialGradientLayer.m */; };
+		59A2F59A1BE521AF008E026E /* CurvedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5991BE521AF008E026E /* CurvedTextField.m */; settings = {ASSET_TAGS = (); }; };
+		59A2F59E1BE52512008E026E /* MusicHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F59C1BE52512008E026E /* MusicHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		59A2F59F1BE52512008E026E /* MusicHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F59D1BE52512008E026E /* MusicHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
+		59A2F5A51BE52579008E026E /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F5A21BE52578008E026E /* gradient.png */; settings = {ASSET_TAGS = (); }; };
+		59A2F5A61BE52579008E026E /* RSPlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5A41BE52578008E026E /* RSPlayPauseButton.m */; settings = {ASSET_TAGS = (); }; };
+		59A2F5A91BE5324A008E026E /* SenderBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5A81BE5324A008E026E /* SenderBGView.m */; settings = {ASSET_TAGS = (); }; };
 		A30047591BE27D9D00EE0A85 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30047581BE27D9D00EE0A85 /* SearchViewController.m */; };
 		A300475D1BE286D600EE0A85 /* RdioTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = A300475C1BE286D600EE0A85 /* RdioTrack.m */; };
 		A33311D01BE3C3B200EA4A98 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A33311BA1BE3C3B200EA4A98 /* AFHTTPRequestOperation.m */; };
@@ -119,6 +125,16 @@
 		59A2F5571BE4B671008E026E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		59A2F5581BE4B671008E026E /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		59A2F5591BE4B671008E026E /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		59A2F5981BE521AF008E026E /* CurvedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurvedTextField.h; sourceTree = "<group>"; };
+		59A2F5991BE521AF008E026E /* CurvedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurvedTextField.m; sourceTree = "<group>"; };
+		59A2F59B1BE52512008E026E /* MusicHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicHeaderView.h; sourceTree = "<group>"; };
+		59A2F59C1BE52512008E026E /* MusicHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicHeaderView.m; sourceTree = "<group>"; };
+		59A2F59D1BE52512008E026E /* MusicHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MusicHeaderView.xib; sourceTree = "<group>"; };
+		59A2F5A21BE52578008E026E /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
+		59A2F5A31BE52578008E026E /* RSPlayPauseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSPlayPauseButton.h; sourceTree = "<group>"; };
+		59A2F5A41BE52578008E026E /* RSPlayPauseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSPlayPauseButton.m; sourceTree = "<group>"; };
+		59A2F5A71BE5324A008E026E /* SenderBGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenderBGView.h; sourceTree = "<group>"; };
+		59A2F5A81BE5324A008E026E /* SenderBGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenderBGView.m; sourceTree = "<group>"; };
 		A30047571BE27D9D00EE0A85 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		A30047581BE27D9D00EE0A85 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		A300475B1BE286D600EE0A85 /* RdioTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RdioTrack.h; sourceTree = "<group>"; };
@@ -306,6 +322,9 @@
 				A3B426F11BE12BFC00102950 /* LaunchScreen.storyboard */,
 				A3AFBADF1BE4E66300BB9009 /* MNCChatMessageCell.h */,
 				A3AFBAE01BE4E66300BB9009 /* MNCChatMessageCell.m */,
+				59A2F5981BE521AF008E026E /* CurvedTextField.h */,
+				59A2F5991BE521AF008E026E /* CurvedTextField.m */,
+				59A2F5A01BE52517008E026E /* Music Header View */,
 				59A2F5101BE45ACD008E026E /* Search Table View Cell */,
 			);
 			name = Views;
@@ -341,6 +360,8 @@
 		59A2F5101BE45ACD008E026E /* Search Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				59A2F5A71BE5324A008E026E /* SenderBGView.h */,
+				59A2F5A81BE5324A008E026E /* SenderBGView.m */,
 				59A2F50D1BE45AC9008E026E /* SearchTableViewCell.h */,
 				59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */,
 			);
@@ -369,6 +390,27 @@
 				59A2F5591BE4B671008E026E /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		59A2F5A01BE52517008E026E /* Music Header View */ = {
+			isa = PBXGroup;
+			children = (
+				59A2F5A11BE52578008E026E /* RSPlayPauseButton */,
+				59A2F59B1BE52512008E026E /* MusicHeaderView.h */,
+				59A2F59C1BE52512008E026E /* MusicHeaderView.m */,
+				59A2F59D1BE52512008E026E /* MusicHeaderView.xib */,
+			);
+			name = "Music Header View";
+			sourceTree = "<group>";
+		};
+		59A2F5A11BE52578008E026E /* RSPlayPauseButton */ = {
+			isa = PBXGroup;
+			children = (
+				59A2F5A21BE52578008E026E /* gradient.png */,
+				59A2F5A31BE52578008E026E /* RSPlayPauseButton.h */,
+				59A2F5A41BE52578008E026E /* RSPlayPauseButton.m */,
+			);
+			path = RSPlayPauseButton;
 			sourceTree = "<group>";
 		};
 		A300475A1BE286C000EE0A85 /* Model */ = {
@@ -661,6 +703,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3EE4FE11BE2915B000AC203 /* tux_duce.png in Resources */,
+				59A2F5A51BE52579008E026E /* gradient.png in Resources */,
+				59A2F59F1BE52512008E026E /* MusicHeaderView.xib in Resources */,
 				18F5B3B21BE503F00046EDA8 /* DarkArmy.mov in Resources */,
 				59A2F55B1BE4B671008E026E /* SVProgressHUD.bundle in Resources */,
 				A3B426F31BE12BFC00102950 /* LaunchScreen.storyboard in Resources */,
@@ -717,6 +761,7 @@
 				A33311D71BE3C3B200EA4A98 /* AFURLConnectionOperation.m in Sources */,
 				A37664981BE3A9B70044C962 /* UIImage+MultiFormat.m in Sources */,
 				A37664991BE3A9B70044C962 /* UIImage+WebP.m in Sources */,
+				59A2F5A91BE5324A008E026E /* SenderBGView.m in Sources */,
 				A33311D21BE3C3B200EA4A98 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				A3B426EB1BE12BFC00102950 /* ViewController.m in Sources */,
 				59A2F55D1BE4B671008E026E /* SVRadialGradientLayer.m in Sources */,
@@ -731,12 +776,14 @@
 				A376648E1BE3A9B70044C962 /* NSData+ImageContentType.m in Sources */,
 				A37664941BE3A9B70044C962 /* SDWebImageManager.m in Sources */,
 				A33311D11BE3C3B200EA4A98 /* AFHTTPRequestOperationManager.m in Sources */,
+				59A2F59E1BE52512008E026E /* MusicHeaderView.m in Sources */,
 				A37664911BE3A9B70044C962 /* SDWebImageDecoder.m in Sources */,
 				A37664931BE3A9B70044C962 /* SDWebImageDownloaderOperation.m in Sources */,
 				A3B426E51BE12BFC00102950 /* main.m in Sources */,
 				A33311D41BE3C3B200EA4A98 /* AFNetworkReachabilityManager.m in Sources */,
 				59A2F55C1BE4B671008E026E /* SVProgressHUD.m in Sources */,
 				A3AFBAE11BE4E66300BB9009 /* MNCChatMessageCell.m in Sources */,
+				59A2F59A1BE521AF008E026E /* CurvedTextField.m in Sources */,
 				A33311D61BE3C3B200EA4A98 /* AFSecurityPolicy.m in Sources */,
 				A3AFBADE1BE4E18800BB9009 /* MNCChatMessage.m in Sources */,
 				A3AFBAD81BE4D2B000BB9009 /* MNCLoginViewController.m in Sources */,
@@ -746,6 +793,7 @@
 				A37664961BE3A9B70044C962 /* UIButton+WebCache.m in Sources */,
 				A3AFBADB1BE4D4A500BB9009 /* MNCChatMateListViewController.m in Sources */,
 				A376649A1BE3A9B70044C962 /* UIImageView+HighlightedWebCache.m in Sources */,
+				59A2F5A61BE52579008E026E /* RSPlayPauseButton.m in Sources */,
 				A37664971BE3A9B70044C962 /* UIImage+GIF.m in Sources */,
 				A376648F1BE3A9B70044C962 /* SDImageCache.m in Sources */,
 				A33311D91BE3C3B200EA4A98 /* AFURLResponseSerialization.m in Sources */,

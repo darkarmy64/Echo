@@ -67,6 +67,7 @@
         NSArray *keys = [@"t54142425,t13181498,t6896160" componentsSeparatedByString:@","];
         [_player.queue add:keys];
         [_player playFromQueue:0];
+		
     } else {
         // Otherwise, just toggle play/pause
         [_player togglePause];

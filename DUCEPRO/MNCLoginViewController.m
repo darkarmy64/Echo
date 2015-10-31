@@ -2,7 +2,7 @@
 #import "AppDelegate.h"
 
 
-@interface MNCLoginViewController ()
+@interface MNCLoginViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *promptLabel;
 
@@ -29,6 +29,9 @@
     self.promptLabel.hidden = YES;
     UITapGestureRecognizer *tapViewGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnView)];
     [self.view addGestureRecognizer:tapViewGR];
+	
+	[self.usernameField becomeFirstResponder];
+	
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"LoginSegue"]) {
@@ -40,6 +43,14 @@
 - (void)didTapOnView {
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (textField == self.usernameField)
+		[self.passwordField becomeFirstResponder];
+	else
+		[self login:self];
+	return YES;
 }
 
 - (IBAction)signup:(id)sender {
