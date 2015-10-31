@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,35 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iSb-iO-Qk5">
-                                <rect key="frame" x="-4" y="0.0" width="328" height="64"/>
-                                <subviews>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXm-fy-Do7">
-                                        <rect key="frame" x="0.0" y="20" width="328" height="44"/>
-                                        <animations/>
-                                        <items>
-                                            <navigationItem title="ECHO" id="Uo4-bO-awC"/>
-                                        </items>
-                                    </navigationBar>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="EXm-fy-Do7" firstAttribute="leading" secondItem="iSb-iO-Qk5" secondAttribute="leading" id="Ikx-VC-uaS"/>
-                                    <constraint firstAttribute="bottom" secondItem="EXm-fy-Do7" secondAttribute="bottom" id="Y4r-hx-6UA"/>
-                                    <constraint firstAttribute="trailing" secondItem="EXm-fy-Do7" secondAttribute="trailing" id="dxq-i1-JPN"/>
-                                    <constraint firstAttribute="height" constant="64" id="fhO-lb-j2d"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="iSb-iO-Qk5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="N0D-Na-0MD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iSb-iO-Qk5" secondAttribute="trailing" constant="-20" id="N3f-yg-1h4"/>
-                            <constraint firstItem="iSb-iO-Qk5" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="YzL-X3-QSo"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
