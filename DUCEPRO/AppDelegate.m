@@ -37,6 +37,9 @@ static Rdio * _rdioInstance;
     // Override point for customization after application launch.
     
 //    Rdio *r = [AppDelegate sharedRdio];
+    
+    self.client = [MSClient clientWithApplicationURLString:@"https://echo.azure-mobile.net/"
+                                            applicationKey:@"TpNuzgZVBTGbDXgbraqvNwbMpaACob38"];
 	
     [Parse setApplicationId:PARSE_APPLICATION_ID clientKey:PARSE_CLIENT_KEY];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

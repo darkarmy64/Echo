@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1888C5CB1BE535F800C3E49F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1888C5CA1BE535F800C3E49F /* WindowsAzureMobileServices.framework */; };
 		1894E8431BE4FF2F00FCF89B /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1894E8421BE4FF2F00FCF89B /* SplashViewController.m */; };
 		18F5B3B21BE503F00046EDA8 /* DarkArmy.mov in Resources */ = {isa = PBXBuildFile; fileRef = 18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */; };
 		59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */; };
@@ -19,12 +20,12 @@
 		59A2F55B1BE4B671008E026E /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F5551BE4B671008E026E /* SVProgressHUD.bundle */; };
 		59A2F55C1BE4B671008E026E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5571BE4B671008E026E /* SVProgressHUD.m */; };
 		59A2F55D1BE4B671008E026E /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5591BE4B671008E026E /* SVRadialGradientLayer.m */; };
-		59A2F59A1BE521AF008E026E /* CurvedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5991BE521AF008E026E /* CurvedTextField.m */; settings = {ASSET_TAGS = (); }; };
-		59A2F59E1BE52512008E026E /* MusicHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F59C1BE52512008E026E /* MusicHeaderView.m */; settings = {ASSET_TAGS = (); }; };
-		59A2F59F1BE52512008E026E /* MusicHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F59D1BE52512008E026E /* MusicHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
-		59A2F5A51BE52579008E026E /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F5A21BE52578008E026E /* gradient.png */; settings = {ASSET_TAGS = (); }; };
-		59A2F5A61BE52579008E026E /* RSPlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5A41BE52578008E026E /* RSPlayPauseButton.m */; settings = {ASSET_TAGS = (); }; };
-		59A2F5A91BE5324A008E026E /* SenderBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5A81BE5324A008E026E /* SenderBGView.m */; settings = {ASSET_TAGS = (); }; };
+		59A2F59A1BE521AF008E026E /* CurvedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5991BE521AF008E026E /* CurvedTextField.m */; };
+		59A2F59E1BE52512008E026E /* MusicHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F59C1BE52512008E026E /* MusicHeaderView.m */; };
+		59A2F59F1BE52512008E026E /* MusicHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F59D1BE52512008E026E /* MusicHeaderView.xib */; };
+		59A2F5A51BE52579008E026E /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 59A2F5A21BE52578008E026E /* gradient.png */; };
+		59A2F5A61BE52579008E026E /* RSPlayPauseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5A41BE52578008E026E /* RSPlayPauseButton.m */; };
+		59A2F5A91BE5324A008E026E /* SenderBGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F5A81BE5324A008E026E /* SenderBGView.m */; };
 		A30047591BE27D9D00EE0A85 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A30047581BE27D9D00EE0A85 /* SearchViewController.m */; };
 		A300475D1BE286D600EE0A85 /* RdioTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = A300475C1BE286D600EE0A85 /* RdioTrack.m */; };
 		A33311D01BE3C3B200EA4A98 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A33311BA1BE3C3B200EA4A98 /* AFHTTPRequestOperation.m */; };
@@ -106,6 +107,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1888C5CA1BE535F800C3E49F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		1894E8411BE4FF2F00FCF89B /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		1894E8421BE4FF2F00FCF89B /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = DarkArmy.mov; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				A3AFBAD21BE4CF3600BB9009 /* Accounts.framework in Frameworks */,
 				A3AFBAD01BE4CEDD00BB9009 /* libsqlite3.tbd in Frameworks */,
 				A3AFBACE1BE4CED200BB9009 /* libz.tbd in Frameworks */,
+				1888C5CB1BE535F800C3E49F /* WindowsAzureMobileServices.framework in Frameworks */,
 				A3AFBACC1BE4CE9B00BB9009 /* StoreKit.framework in Frameworks */,
 				A3AFBACA1BE4CE9100BB9009 /* QuartzCore.framework in Frameworks */,
 				A3AFBAC81BE4CE8400BB9009 /* CoreLocation.framework in Frameworks */,
@@ -565,6 +568,7 @@
 				A3AFBAD31BE4CF4800BB9009 /* Social.framework */,
 				A3AFBAD11BE4CF3600BB9009 /* Accounts.framework */,
 				A3AFBACF1BE4CEDD00BB9009 /* libsqlite3.tbd */,
+				1888C5CA1BE535F800C3E49F /* WindowsAzureMobileServices.framework */,
 				A3AFBACD1BE4CED200BB9009 /* libz.tbd */,
 				A3AFBACB1BE4CE9B00BB9009 /* StoreKit.framework */,
 				A3AFBAC91BE4CE9100BB9009 /* QuartzCore.framework */,
@@ -962,7 +966,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Debug;
 		};
@@ -996,7 +1000,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Release;
 		};

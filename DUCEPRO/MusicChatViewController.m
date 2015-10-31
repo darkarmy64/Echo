@@ -176,7 +176,17 @@
 
 - (void)receiveMessage:(RdioTrack *)track {
     currentTrack = track;
-}
+    MSClient *client = [(AppDelegate *) [[UIApplication sharedApplication] delegate] client];
+    NSDictionary *rowOfData = @{@"recipient_id" : self.chatMateId, @"sender_id" : self.myUserId, @"current_track" : currentTrack.trackKey};
+    MSTable *database = [client tableWithName:@"SongStore"];
+    [database insert:rowOfData completion:^(NSDictionary *insertedItem, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"Item inserted, id: %@\n%@\n%@", [insertedItem objectForKey:@"recipient_id"], [insertedItem objectForKey:@"sender_id"], [insertedItem objectForKey:@"current_track"]);
+        }
+    }];
+    }
 
 - (IBAction)openSearchView:(id)sender {
     
