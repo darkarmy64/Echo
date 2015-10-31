@@ -71,11 +71,10 @@
 	 */
 	
     // Automatically determine the height of each self-sizing tabel view cells - an iOS 8 feature
-    self.myTableView.rowHeight = UITableViewAutomaticDimension;     /* add this line */
+//    self.myTableView.rowHeight = UITableViewAutomaticDimension;     /* add this line */
     [self retrieveMessagesFromParseWithChatMateID:self.chatMateId];
     UITapGestureRecognizer *tapTableGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView)];
     [self.myTableView addGestureRecognizer:tapTableGR];
-    [self registerForKeyboardNotifications];
 	
 	if (!musicHeaderView) {
 		musicHeaderView = [[[NSBundle mainBundle] loadNibNamed:@"MusicHeaderView" owner:self options:nil] firstObject];
@@ -95,6 +94,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+	
+	musicHeaderView.songNameLabel.text = @"";
+	musicHeaderView.artistAlbumLabel.text = @"";
 
     if (![currentTrack.trackName isEqualToString:@""]) {
         NSLog(@"CURRENT NAME : %@",currentTrack.trackName);
@@ -154,15 +156,6 @@
 
 
 // Setting up keyboard notifications.
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
-                                                 name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-}
 
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
@@ -438,6 +431,7 @@
 
 - (void)sendMessage:(id)sender
 {
+	[self.messageEditField setText:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 //    NSLog(@"MESSAGE ON TEXT FIELD: %@",self.messageEditField.text);
     [appDelegate sendTextMessage:self.messageEditField.text toRecipient:self.chatMateId];
@@ -526,6 +520,19 @@
 	return musicHeaderView;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	//	if ([indexPath compare:_selectedIndexPath] == NSOrderedSame)
+	MNCChatMessage *chatMessage = self.messageArray[indexPath.row];
+	CGRect bounds = [[chatMessage.text stringByReplacingOccurrencesOfString:@"\n\n" withString:@"\n"]
+					 boundingRectWithSize:CGSizeMake(SWidth - 140, 0)
+					 options:NSStringDrawingUsesLineFragmentOrigin
+					 attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17.f]}
+					 context:nil];
+	return bounds.size.height + 20.f;
+//	return 44.f;
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 	//	CGFloat offsety = self.myTableView.contentOffset.y;
 	//	CGFloat minHeight = 120.f;
@@ -536,7 +543,6 @@
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	[self.activeTextField resignFirstResponder];
 //	CGFloat offsety = self.myTableView.contentOffset.y;
 //	CGFloat minHeight = 120.f;
 //	[self.myTableView beginUpdates];
@@ -588,7 +594,7 @@
 	}
 }
 
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+-(void)scrollViewDidBeginDragging:(UIScrollView *)scrollView {
 	[self.activeTextField resignFirstResponder];
 	[self resignFirstResponder];
 }

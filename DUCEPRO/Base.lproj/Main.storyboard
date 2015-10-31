@@ -662,6 +662,7 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="32" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pv6-J1-ghC">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                                 <animations/>
+                                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
                                                     <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageListPrototypeCell" rowHeight="32" id="3pb-hV-F7N" customClass="MNCChatMessageCell">
                                                         <rect key="frame" x="0.0" y="22" width="320" height="32"/>
@@ -671,10 +672,10 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat mate message shows here" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtV-fv-QEJ">
-                                                                    <rect key="frame" x="8" y="8" width="167" height="16"/>
+                                                                    <rect key="frame" x="8" y="8" width="157" height="16"/>
                                                                     <animations/>
-                                                                    <color key="backgroundColor" red="0.75294117650000003" green="1" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                                    <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
@@ -685,11 +686,11 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My message shows here" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSA-1h-QUj">
-                                                                    <rect key="frame" x="112" y="8" width="200" height="16"/>
+                                                                    <rect key="frame" x="123" y="8" width="189" height="16"/>
                                                                     <animations/>
-                                                                    <color key="backgroundColor" red="0.49803921569999998" green="0.75294117650000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -727,12 +728,12 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtf-uU-Z64">
                                                 <rect key="frame" x="248" y="524" width="72" height="44"/>
                                                 <animations/>
-                                                <color key="backgroundColor" red="0.3411764706" green="0.16862745100000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="72" id="isp-OP-jDh"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <state key="normal" title="Send">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -742,21 +743,21 @@
                                                     <action selector="sendMessage:" destination="mUy-pO-XL4" eventType="touchUpInside" id="els-Ol-j62"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-NA-woc">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type your message..." minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-NA-woc">
                                                 <rect key="frame" x="8" y="524" width="240" height="44"/>
                                                 <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="5AG-gu-pHo"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="mUy-pO-XL4" id="bVn-6L-abz"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="Pv6-J1-ghC" firstAttribute="top" secondItem="RXq-oy-9cT" secondAttribute="top" id="0xM-fw-M35"/>
                                             <constraint firstItem="wtf-uU-Z64" firstAttribute="leading" secondItem="vxi-NA-woc" secondAttribute="trailing" id="38p-JJ-Bt9"/>
@@ -778,6 +779,7 @@
                                     </view>
                                 </subviews>
                                 <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="RXq-oy-9cT" firstAttribute="top" secondItem="0go-w9-Nxp" secondAttribute="top" id="07N-pl-oLQ"/>
                                     <constraint firstItem="RXq-oy-9cT" firstAttribute="leading" secondItem="0go-w9-Nxp" secondAttribute="leading" id="8im-G4-W9h"/>
