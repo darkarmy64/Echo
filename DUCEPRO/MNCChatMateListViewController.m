@@ -13,10 +13,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.myUserId;
-    
+    self.navigationItem.title = [NSString stringWithFormat:@"@%@", self.myUserId];
     
     self.chatMatesArray = [[NSMutableArray alloc] init];
+	
+	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+	self.navigationItem.backBarButtonItem = backButton;
     
 }
 
@@ -70,6 +72,23 @@
 	}];
 }
 
+- (IBAction)logoutAction:(id)sender {
+	UIAlertController *alertContoller = [UIAlertController alertControllerWithTitle:@"Logout?" message:@"Are you sure?" preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) { }];
+	UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Logout" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action)
+								   {
+									   [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+										   [self dismissViewControllerAnimated:YES completion:^{
+											   
+										   }];
+									   }];
+									   
+								   }];
+	[alertContoller addAction:cancelAction];
+	[alertContoller addAction:deleteAction];
+	[self presentViewController:alertContoller animated:YES completion:^{ }];
+}
+
 
 #pragma mark UITableViewDataSource protocol methods
 
@@ -83,6 +102,15 @@
 {
     // Return the number of rows in the section.
     return [self.chatMatesArray count];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+	return 10.f;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10)];
+	return view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

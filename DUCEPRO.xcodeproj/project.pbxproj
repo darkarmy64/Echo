@@ -988,6 +988,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DUCEPRO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -1006,7 +1007,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
+				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
 			};
 			name = Debug;
 		};
@@ -1022,6 +1023,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = DUCEPRO/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -1040,7 +1042,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
+				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
 			};
 			name = Release;
 		};

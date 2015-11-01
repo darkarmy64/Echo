@@ -91,6 +91,7 @@
 }
 
 
+
 #pragma mark - RdioDelegate
 - (void)rdioDidAuthorizeUser:(NSDictionary *)user
 {
@@ -116,6 +117,9 @@
     [self setLoggedIn:NO];
 }
 
+- (IBAction)doneAction:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - RDPlayerDelegate
 -(BOOL)rdioIsPlayingElsewhere

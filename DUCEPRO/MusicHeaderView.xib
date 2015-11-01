@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -45,7 +46,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGA-d4-BeD">
-                    <rect key="frame" x="332" y="306" width="60" height="60"/>
+                    <rect key="frame" x="332" y="271" width="60" height="60"/>
                     <animations/>
                     <state key="normal" backgroundImage="twitter"/>
                 </button>
@@ -65,12 +66,18 @@
                 <constraint firstAttribute="trailing" secondItem="PJD-bM-72T" secondAttribute="trailing" constant="16" id="KiK-0L-OQ7"/>
                 <constraint firstAttribute="bottom" secondItem="nGA-d4-BeD" secondAttribute="bottom" constant="34" id="LhR-36-TzI"/>
                 <constraint firstAttribute="trailing" secondItem="IEZ-1G-SKI" secondAttribute="trailing" constant="16" id="NaP-Da-yWr"/>
+                <constraint firstItem="IEZ-1G-SKI" firstAttribute="top" secondItem="nGA-d4-BeD" secondAttribute="bottom" constant="8" id="dt9-Cz-qTb"/>
                 <constraint firstItem="Gbn-gc-ioD" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fMe-nD-KAs"/>
                 <constraint firstItem="PJD-bM-72T" firstAttribute="top" secondItem="IEZ-1G-SKI" secondAttribute="bottom" constant="8" id="gvl-T6-q4J"/>
                 <constraint firstItem="aQh-Ah-CXX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ixj-2I-PVy"/>
                 <constraint firstItem="4JR-4m-Wua" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rFr-aK-R1U"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="LhR-36-TzI"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="albumCoverImageView" destination="aQh-Ah-CXX" id="cPK-tm-7dU"/>
                 <outlet property="artistAlbumLabel" destination="PJD-bM-72T" id="Wep-92-b7i"/>

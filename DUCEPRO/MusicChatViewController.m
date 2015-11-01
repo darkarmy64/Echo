@@ -41,6 +41,8 @@
     BOOL _loggedIn;
     
     NSTimer *timer;
+	
+	CAGradientLayer *gradient;
 
 }
 
@@ -65,7 +67,7 @@
     self.messageArray = [[NSMutableArray alloc] init];
 	
     // Automatically determine the height of each self-sizing tabel view cells - an iOS 8 feature
-//    self.myTableView.rowHeight = UITableViewAutomaticDimension;     /* add this line */
+    self.myTableView.rowHeight = UITableViewAutomaticDimension;     /* add this line */
     [self retrieveMessagesFromParseWithChatMateID:self.chatMateId];
     UITapGestureRecognizer *tapTableGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnTableView)];
     [self.myTableView addGestureRecognizer:tapTableGR];
@@ -82,6 +84,8 @@
 //     timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerDidFire:) userInfo:nil repeats:YES];
 //    [timer fire];
 
+	
+	
 }
 
 -(void)timerDidFire:(NSTimer *)timer {
@@ -111,12 +115,29 @@
     [timer invalidate];
     timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerDidFire:) userInfo:nil repeats:YES];
 //    [self refreshTrack];
+	
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+	self.navigationController.navigationBar.shadowImage = [UIImage new];
+	self.navigationController.navigationBar.translucent = YES;
+	self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+	self.navigationController.view.backgroundColor = [UIColor clearColor];
+	
+	gradient = [CAGradientLayer layer];
+	gradient.frame = CGRectMake(0, -20, SWidth, 64);
+	gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor darkGrayColor] CGColor], (id)[[UIColor clearColor] CGColor], nil];
+	[self.navigationController.navigationBar.layer insertSublayer:gradient atIndex:1];
 
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [_player.queue removeAll];
     [timer invalidate];
+	
+	self.navigationController.navigationBar.translucent = YES;
+	self.navigationController.navigationBar.backgroundColor = GLOBAL_BACK_COLOR;
+	self.navigationController.view.backgroundColor = GLOBAL_BACK_COLOR;
+	
+	[gradient removeFromSuperlayer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -441,10 +462,10 @@
 
 - (void)sendMessage:(id)sender
 {
-	[self.messageEditField setText:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 //    NSLog(@"MESSAGE ON TEXT FIELD: %@",self.messageEditField.text);
     [appDelegate sendTextMessage:self.messageEditField.text toRecipient:self.chatMateId];
+	[self.messageEditField setText:nil];
 }
 
 - (void)messageDelivered:(NSNotification *)notification
@@ -531,9 +552,12 @@
 	return musicHeaderView;
 }
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	//	if ([indexPath compare:_selectedIndexPath] == NSOrderedSame)
 	MNCChatMessage *chatMessage = self.messageArray[indexPath.row];
+	if (chatMessage.text.length < 40)
+		return UITableViewAutomaticDimension;
 	CGRect bounds = [[chatMessage.text stringByReplacingOccurrencesOfString:@"\n\n" withString:@"\n"]
 					 boundingRectWithSize:CGSizeMake(SWidth - 140, 0)
 					 options:NSStringDrawingUsesLineFragmentOrigin

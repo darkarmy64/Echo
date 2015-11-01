@@ -1,5 +1,6 @@
 #import "MNCLoginViewController.h"
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 
 @interface MNCLoginViewController () <UITextFieldDelegate>
@@ -41,7 +42,8 @@
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"LoginSegue"]) {
-        MNCChatMateListViewController *destViewController = segue.destinationViewController;
+		UINavigationController *navc = [segue destinationViewController];
+        MNCChatMateListViewController *destViewController = [navc.viewControllers firstObject];
         destViewController.myUserId = self.usernameField.text;
     }
 }
@@ -57,6 +59,12 @@
 	else
 		[self login:self];
 	return YES;
+}
+
+-(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+	UINavigationController *navC = [self.storyboard instantiateViewControllerWithIdentifier:@"mainVcNav"];
+//	ViewController *vc = [navC.viewControllers firstObject];
+	[self presentViewController:navC animated:YES completion:nil];
 }
 
 - (IBAction)signup:(id)sender {
