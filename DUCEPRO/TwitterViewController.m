@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view.
 	
 	// TODO: Base this Tweet ID on some data from elsewhere in your app
+    
+    self.title = self.songName;
 	
 	if (!self.searchString)
 		self.searchString = @"#music";

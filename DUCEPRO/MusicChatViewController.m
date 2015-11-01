@@ -63,12 +63,6 @@
 	
     self.navigationItem.title = self.chatMateId;
     self.messageArray = [[NSMutableArray alloc] init];
-    
-	/* Push Twitter VC
-	TwitterViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TwitterVC"];
-	tvc.searchString = @"SearchString";
-	[self.navigationController pushViewController:tvc animated:YES];
-	 */
 	
     // Automatically determine the height of each self-sizing tabel view cells - an iOS 8 feature
 //    self.myTableView.rowHeight = UITableViewAutomaticDimension;     /* add this line */
@@ -80,6 +74,7 @@
 		musicHeaderView = [[[NSBundle mainBundle] loadNibNamed:@"MusicHeaderView" owner:self options:nil] firstObject];
 		[musicHeaderView setPlaying:NO];
 		[musicHeaderView.playPauseButton addTarget:self action:@selector(playPauseTapped:) forControlEvents:UIControlEventAllEvents];
+        [musicHeaderView.twitterButton addTarget:self action:@selector(twitterAction:) forControlEvents:UIControlEventTouchUpInside];
 	}
     
 //    [self refreshTrack];
@@ -146,6 +141,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)twitterAction:(id)sender {
+    //  Twitter VC
+    if (!([currentTrack.trackName isEqualToString:@""] || [currentTrack.trackName isKindOfClass:[NSNull class]])) {
+         TwitterViewController *tvc = [self.storyboard instantiateViewControllerWithIdentifier:@"TwitterVC"];
+        tvc.songName = currentTrack.trackName;
+        NSString *artistTag = ([currentTrack.trackArtist isKindOfClass:[NSNull class]])?@"":[NSString stringWithFormat:@"#%@",[currentTrack.trackArtist stringByReplacingOccurrencesOfString:@" " withString:@""]];
+         tvc.searchString = [NSString stringWithFormat:@"#%@ %@", [currentTrack.trackName stringByReplacingOccurrencesOfString:@" " withString:@""], artistTag];
+         [self.navigationController pushViewController:tvc animated:YES];
+    }
 }
 
 #pragma mark Helper Methods
@@ -317,17 +323,21 @@
                              success:^(NSDictionary *resultx) {
                                  NSMutableArray * tempMutableArray = [NSMutableArray new];
                                  tempMutableArray = [resultx objectForKey:@"results"];
-                                 for (NSDictionary * trackObject in tempMutableArray) {
-                                     RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
-									 if ([track.trackKey isEqualToString:currentTrack.trackKey]) {
-										 // Already Playing...
-										 NSLog(@"Already playing song from other user.");
-										 break;
-									 }
-                                     if ([track.trackKey isEqualToString:[item objectForKey:@"current_track"]] ) {
-                                         NSLog(@"Updating track info From OtherUser...");
-                                         currentTrack = track;
-                                         [self viewDidAppear:YES];
+                                 
+                                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"key == %@", currentTrack.trackKey];
+                                 
+                                 if ([[tempMutableArray filteredArrayUsingPredicate:predicate] count] > 0) {
+                                     NSLog(@"Already playing song from other user.");
+                                     [timer invalidate];
+                                 }
+                                 else {
+                                     for (NSDictionary * trackObject in tempMutableArray) {
+                                         RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
+                                         if ([track.trackKey isEqualToString:[item objectForKey:@"current_track"]] ) {
+                                             NSLog(@"Updating track info From OtherUser...");
+                                             currentTrack = track;
+                                             [self viewDidAppear:YES];
+                                         }
                                      }
                                  }
                              } failure:^(NSError *error) {
@@ -510,6 +520,7 @@
 		[musicHeaderView setPlaying:NO];
 		musicHeaderView.albumCoverImageView.clipsToBounds = YES;
 		[musicHeaderView.playPauseButton addTarget:self action:@selector(playPauseTapped:) forControlEvents:UIControlEventAllEvents];
+        [musicHeaderView.twitterButton addTarget:self action:@selector(twitterAction:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	
 	//	musicHeaderView.albumCoverImageView.image = [UIImage imageNamed:@"MX.jpg"];
@@ -594,9 +605,9 @@
 	}
 }
 
--(void)scrollViewDidBeginDragging:(UIScrollView *)scrollView {
-	[self.activeTextField resignFirstResponder];
-	[self resignFirstResponder];
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self.activeTextField resignFirstResponder];
+    [self resignFirstResponder];
 }
 
 

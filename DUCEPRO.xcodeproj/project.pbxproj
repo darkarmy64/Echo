@@ -1006,7 +1006,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Debug;
 		};
@@ -1040,7 +1040,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Release;
 		};

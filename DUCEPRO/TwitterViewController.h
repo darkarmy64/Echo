@@ -14,5 +14,6 @@
 @interface TwitterViewController : TWTRTimelineViewController
 
 @property (strong, nonatomic) NSString *searchString;
+@property (strong, nonatomic) NSString *songName;
 
 @end
