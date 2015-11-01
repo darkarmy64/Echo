@@ -43,6 +43,8 @@
     NSTimer *timer;
 	
 	CAGradientLayer *gradient;
+	
+	BOOL shouldRefersh;
 
 }
 
@@ -77,7 +79,10 @@
 		[musicHeaderView setPlaying:NO];
 		[musicHeaderView.playPauseButton addTarget:self action:@selector(playPauseTapped:) forControlEvents:UIControlEventAllEvents];
         [musicHeaderView.twitterButton addTarget:self action:@selector(twitterAction:) forControlEvents:UIControlEventTouchUpInside];
+		[musicHeaderView.favButton addTarget:self action:@selector(favAction:) forControlEvents:UIControlEventTouchUpInside];
 	}
+	
+	shouldRefersh = YES;
     
 //    [self refreshTrack];
     
@@ -89,7 +94,9 @@
 }
 
 -(void)timerDidFire:(NSTimer *)timer {
-    [self refreshTrack];
+	if (shouldRefersh)
+		[self refreshTrack];
+//	shouldRefersh = !shouldRefersh;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -113,7 +120,7 @@
 		[musicHeaderView setPlaying:NO];
     }
     [timer invalidate];
-    timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerDidFire:) userInfo:nil repeats:YES];
+    timer = [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(timerDidFire:) userInfo:nil repeats:YES];
 //    [self refreshTrack];
 	
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -122,22 +129,18 @@
 	self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 	self.navigationController.view.backgroundColor = [UIColor clearColor];
 	
-	gradient = [CAGradientLayer layer];
-	gradient.frame = CGRectMake(0, -20, SWidth, 64);
-	gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor darkGrayColor] CGColor], (id)[[UIColor clearColor] CGColor], nil];
+	if (!gradient) {
+		gradient = [CAGradientLayer layer];
+		gradient.frame = CGRectMake(0, -20, SWidth, 64);
+		gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor darkGrayColor] CGColor], (id)[[UIColor clearColor] CGColor], nil];
+	}
 	[self.navigationController.navigationBar.layer insertSublayer:gradient atIndex:1];
 
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [_player.queue removeAll];
+//    [_player.queue removeAll];
     [timer invalidate];
-	
-	self.navigationController.navigationBar.translucent = YES;
-	self.navigationController.navigationBar.backgroundColor = GLOBAL_BACK_COLOR;
-	self.navigationController.view.backgroundColor = GLOBAL_BACK_COLOR;
-	
-	[gradient removeFromSuperlayer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -156,6 +159,15 @@
 {
 	[self.activeTextField resignFirstResponder];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+	
+	self.navigationController.navigationBar.translucent = YES;
+	self.navigationController.navigationBar.backgroundColor = GLOBAL_BACK_COLOR;
+	self.navigationController.view.backgroundColor = GLOBAL_BACK_COLOR;
+	
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+	self.navigationController.navigationBar.shadowImage = [UIImage new];
+	
+	[gradient removeFromSuperlayer];
 }
 
 
@@ -173,6 +185,21 @@
          tvc.searchString = [NSString stringWithFormat:@"#%@ %@", [currentTrack.trackName stringByReplacingOccurrencesOfString:@" " withString:@""], artistTag];
          [self.navigationController pushViewController:tvc animated:YES];
     }
+}
+
+-(void)favAction:(id)sender {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSMutableArray *favArray = [NSMutableArray new];
+	if ([defaults objectForKey:@"favourites"])
+		favArray = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favourites"]];
+	if (![currentTrack.trackKey isKindOfClass:[NSNull class]]) {
+		if ([favArray containsObject:currentTrack.trackKey])
+			[favArray removeObject:currentTrack.trackKey];
+		else
+			[favArray addObject:currentTrack.trackKey];
+	}
+	[defaults setObject:favArray forKey:@"favourites"];
+	[self refreshTrack];
 }
 
 #pragma mark Helper Methods
@@ -314,7 +341,7 @@
         
     }];
      
-	[self refreshTrack];
+//	[self refreshTrack];
 
 	
 //    [database insert:rowOfData completion:^(NSDictionary *insertedItem, NSError *error) {
@@ -341,7 +368,7 @@
             
             if (!(item == nil || [[item objectForKey:@"track_name"] isKindOfClass:[NSNull class]]))
             {
-                
+//				shouldRefersh = NO;
                 [_rdio callAPIMethod:@"search" withParameters:@{@"query":[item objectForKey:@"track_name"],
                                                                 @"types":@"Track"}
                              success:^(NSDictionary *resultx) {
@@ -365,7 +392,7 @@
 											 
 											 [_player stop];
 											 [_player.queue removeAll];
-											 [_player.queue add:@[track.trackKey]];
+											 [_player.queue add:currentTrack.trackKey];
 											 
                                              [self viewDidAppear:YES];
                                          }
@@ -376,46 +403,21 @@
                              }];
                 
             }
-            /*
-            for(NSDictionary *item in result.items) { // items is NSArray of records that match query
-                NSLog(@"Todo Item: %@\n%@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"], [item objectForKey:@"track_name"]);
-                if (item == nil || [[item objectForKey:@"track_name"] isKindOfClass:[NSNull class]])
-                {
-                    break;
-                }
-                else if ([[item objectForKey:@"current_track"] isEqualToString:currentTrack.trackKey])
-                {
-                    break;
-                }
-                else
-                {
-                    // if currently present track in the app is not the same as the one on the DB
-                    // The other user/receipent has changed the track
-                    [_player stop];
-                    [_player.queue removeAll];
-                    [_player.queue add:item];
-                    [_rdio callAPIMethod:@"search" withParameters:@{@"query":[item objectForKey:@"track_name"],
-                                                                    @"types":@"Track"}
-                                 success:^(NSDictionary *resultx) {
-                                     NSMutableArray * tempMutableArray = [NSMutableArray new];
-                                     tempMutableArray = [resultx objectForKey:@"results"];
-                                     for (NSDictionary * trackObject in tempMutableArray) {
-                                         RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
-                                         if ([track.trackKey isEqualToString:[item objectForKey:@"current_track"]] ) {
-                                             NSLog(@"Updating track info...");
-                                             currentTrack = track;
-                                             [self viewDidAppear:YES];
-                                         }
-                                     }
-                                 } failure:^(NSError *error) {
-                                     
-                                 }];
-                }
-            }
-             */
+
         }
 
     }];
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSMutableArray *favArray = [NSMutableArray new];
+	if ([defaults objectForKey:@"favourites"])
+		favArray = [NSMutableArray arrayWithArray:[defaults objectForKey:@"favourites"]];
+	
+	if ([favArray containsObject:currentTrack.trackKey])
+		[musicHeaderView.favButton setImage:[UIImage imageNamed:@"fav"] forState:UIControlStateNormal];
+	else
+		[musicHeaderView.favButton setImage:[UIImage imageNamed:@"nfav"] forState:UIControlStateNormal];
+	
     
 //    [database readWithCompletion:^(MSQueryResult *result, NSError *error) {
 //        if(error) { // error is nil if no error occured

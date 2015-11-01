@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, PlayState) {
 @property (weak, nonatomic) IBOutlet UIImageView *albumCoverImageView;
 
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
+@property (weak, nonatomic) IBOutlet UIButton *favButton;
 
 
 @end

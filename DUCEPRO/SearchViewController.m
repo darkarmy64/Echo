@@ -13,10 +13,13 @@
 #import "RdioTrack.h"
 #import "UIImageView+WebCache.h"
 #import "SearchTableViewCell.h"
+#import "SCSiriWaveformView.h"
 
 @interface SearchViewController () <UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,RdioDelegate>
 {
      Rdio *_rdio;
+	
+	BOOL searching;
 }
 @property NSMutableArray * trackArray;
 
@@ -56,20 +59,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
 	[self.trackSearchBar becomeFirstResponder];
-}
-
--(void)viewWillDisappear:(BOOL)animated {
-	[self resignFirstResponder];
-	[self.trackSearchBar resignFirstResponder];
-}
-
-- (void)cancelSearch {
-	[self resignFirstResponder];
-    [self.trackSearchBar resignFirstResponder];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+	searching = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,14 +73,6 @@
 	[self.trackSearchBar resignFirstResponder];
 	[self resignFirstResponder];
 }
-
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    UISearchBar *searchBar = _trackSearchBar;
-//    CGRect rect = searchBar.frame;
-//    rect.origin.y = MIN(0, scrollView.contentOffset.y);
-//    searchBar.frame = rect;
-//}
 
 #pragma mark - Table View
 
@@ -132,33 +114,49 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 0;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView * blankView = [[UIView alloc] initWithFrame:CGRectZero];
+    return blankView;
+}
+
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+// 
+// // Instead of this add a results count view
+//	
+//	SCSiriWaveformView *siriView = [[SCSiriWaveformView alloc] initWithFrame:CGRectMake(0, 0, SWidth, 80)];
+//	
+//	[siriView setWaveColor:GLOBAL_TINT_COLOR];
+//	[siriView setPrimaryWaveLineWidth:1.5f];
+//	[siriView setSecondaryWaveLineWidth:1.0];
+//	[siriView setIdleAmplitude:0.01];
+//	[siriView setFrequency:0.5];
+//	[siriView setDensity:10];
+//	[siriView setPhaseShift:-0.15];
+//	
+//	[siriView updateWithLevel:1.0];
+//	
+//	return siriView;
 //
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    UIView * blankView = [[UIView alloc] initWithFrame:CGRectZero];
-//    return blankView;
 //}
 
-/*
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
- 
- // Instead of this add a results count view
-    
-    _trackSearchBar = [[UISearchBar alloc] init];
-    [_trackSearchBar sizeToFit];
-    [_trackSearchBar setDelegate:self];
-    return _trackSearchBar;
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//	if (searching)
+//		return 80;
+//	return 0;
+//}
 
-}
-*/
-/*
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44;
-}
- */
 #pragma mark Search Bar Delegate
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+	searching = YES;
+	[self.trackTableView reloadData];
+	return YES;
+}
 
 -(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
 	if (searchBar.text.length > 0)
@@ -167,8 +165,11 @@
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    
+	
+	[SVProgressHUD showWithStatus:@"Searching..."];
+	
     [searchBar resignFirstResponder];
+	
     [_rdio callAPIMethod:@"search" withParameters:@{@"query":searchBar.text,
                                                     @"types":@"Track"}
                  success:^(NSDictionary *result) {
@@ -181,18 +182,24 @@
 //                         NSLog(@"TRACK NAME: %@",track.trackName);
                      }
                      [_trackTableView reloadData];
+					 
+					 [SVProgressHUD dismiss];
+					 
                  } failure:^(NSError *error) {
                      
                  }];
 
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [searchBar resignFirstResponder];
-	[self resignFirstResponder];
-    // You can write search code Here
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+	[self searchBarTextDidEndEditing:searchBar];
 }
+
+/*
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+	// Fast search
+}
+ */
 
 -(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
 	[searchBar resignFirstResponder];

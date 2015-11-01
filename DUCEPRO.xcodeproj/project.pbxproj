@@ -10,6 +10,7 @@
 		1888C5CB1BE535F800C3E49F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1888C5CA1BE535F800C3E49F /* WindowsAzureMobileServices.framework */; };
 		1894E8431BE4FF2F00FCF89B /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1894E8421BE4FF2F00FCF89B /* SplashViewController.m */; };
 		18F5B3B21BE503F00046EDA8 /* DarkArmy.mov in Resources */ = {isa = PBXBuildFile; fileRef = 18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */; };
+		59971A791BE5D38C00EFCA9E /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59971A781BE5D38C00EFCA9E /* SCSiriWaveformView.m */; settings = {ASSET_TAGS = (); }; };
 		59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */; };
 		59A2F5491BE4B327008E026E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5451BE4B327008E026E /* Fabric.framework */; };
 		59A2F54A1BE4B327008E026E /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5461BE4B327008E026E /* TwitterKit.framework */; };
@@ -111,6 +112,8 @@
 		1894E8411BE4FF2F00FCF89B /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		1894E8421BE4FF2F00FCF89B /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = DarkArmy.mov; sourceTree = "<group>"; };
+		59971A771BE5D38C00EFCA9E /* SCSiriWaveformView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSiriWaveformView.h; sourceTree = "<group>"; };
+		59971A781BE5D38C00EFCA9E /* SCSiriWaveformView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSiriWaveformView.m; sourceTree = "<group>"; };
 		59A2F50D1BE45AC9008E026E /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		59A2F5451BE4B327008E026E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -353,6 +356,15 @@
 				A30047581BE27D9D00EE0A85 /* SearchViewController.m */,
 			);
 			name = Search;
+			sourceTree = "<group>";
+		};
+		59971A761BE5D38C00EFCA9E /* SCSiriWaveformView */ = {
+			isa = PBXGroup;
+			children = (
+				59971A771BE5D38C00EFCA9E /* SCSiriWaveformView.h */,
+				59971A781BE5D38C00EFCA9E /* SCSiriWaveformView.m */,
+			);
+			path = SCSiriWaveformView;
 			sourceTree = "<group>";
 		};
 		59A2F5101BE45ACD008E026E /* Search Table View Cell */ = {
@@ -635,6 +647,7 @@
 		A3EE4FAD1BE29054000AC203 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				59971A761BE5D38C00EFCA9E /* SCSiriWaveformView */,
 				59A2F5511BE4B671008E026E /* SVProgressHUD */,
 				A33311B81BE3C3A200EA4A98 /* AFNetworkingAuth */,
 				A376646B1BE3A6D30044C962 /* SDWebImage */,
@@ -809,6 +822,7 @@
 				A33311D21BE3C3B200EA4A98 /* AFHTTPRequestSerializer+OAuth2.m in Sources */,
 				A3B426EB1BE12BFC00102950 /* ViewController.m in Sources */,
 				59A2F55D1BE4B671008E026E /* SVRadialGradientLayer.m in Sources */,
+				59971A791BE5D38C00EFCA9E /* SCSiriWaveformView.m in Sources */,
 				59A2F55A1BE4B671008E026E /* SVIndefiniteAnimatedView.m in Sources */,
 				A376649B1BE3A9B70044C962 /* UIImageView+WebCache.m in Sources */,
 				A33311D51BE3C3B200EA4A98 /* AFOAuth2Manager.m in Sources */,
