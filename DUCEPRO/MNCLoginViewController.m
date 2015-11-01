@@ -39,6 +39,12 @@
 	
 	self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
 	
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:@"usernameSave"]) {
+		self.usernameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"usernameSave"];
+		self.passwordField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"passwordSave"];
+	}
+	
+	
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"LoginSegue"]) {
@@ -54,6 +60,10 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
+	
+	[[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"usernameSave"];
+	[[NSUserDefaults standardUserDefaults] setObject:self.passwordField.text forKey:@"passwordSave"];
+	
 	if (textField == self.usernameField)
 		[self.passwordField becomeFirstResponder];
 	else

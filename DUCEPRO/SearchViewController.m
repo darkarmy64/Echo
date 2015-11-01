@@ -37,12 +37,21 @@
 	[_trackSearchBar setTintColor:GLOBAL_TINT_COLOR];
 	[_trackSearchBar setBarTintColor:GLOBAL_TINT_COLOR];
 	[_trackSearchBar setKeyboardAppearance:UIKeyboardAppearanceDark];
-	[_trackSearchBar setShowsCancelButton:YES];
+//	[_trackSearchBar setShowsCancelButton:YES];
 	
 	[self.navigationItem setTitleView:_trackSearchBar];
 
-//	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissViewControllerAnimated:completion:)];
-//	self.navigationItem.leftBarButtonItem = doneButton;
+	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissVC)];
+	self.navigationItem.leftBarButtonItem = doneButton;
+	
+//	UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissVC)];
+//	[self.view addGestureRecognizer:tapGesture];
+}
+
+-(void)dismissVC {
+	[self resignFirstResponder];
+	[self.trackSearchBar resignFirstResponder];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

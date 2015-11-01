@@ -222,6 +222,12 @@
 
 - (void)receiveMessage:(RdioTrack *)track {
     currentTrack = track;
+	
+	[_player stop];
+	[_player.queue removeAll];
+	
+	[musicHeaderView setPlaying:NO];
+	
     MSClient *client = [(AppDelegate *) [[UIApplication sharedApplication] delegate] client];
     NSMutableDictionary *rowOfData = [NSMutableDictionary dictionaryWithDictionary:@{@"recipient_id" : self.chatMateId, @"sender_id" : self.myUserId, @"current_track" : currentTrack.trackKey, @"track_name" : currentTrack.trackName}];
     MSTable *database = [client tableWithName:@"SongStore"];
@@ -289,7 +295,7 @@
                     } else {
                         NSLog(@"Item updated FTGOSE, id: %@\n%@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"], [item objectForKey:@"track_name"]);
                     }
-                    [self refreshTrack];
+//                    [self refreshTrack];
                 }];
                 
             }
@@ -301,16 +307,16 @@
                     } else {
                         NSLog(@"Item inserted, id: %@\n%@\n%@\n%@", [insertedItem objectForKey:@"recipient_id"], [insertedItem objectForKey:@"sender_id"], [insertedItem objectForKey:@"current_track"], [insertedItem objectForKey:@"track_name"]);
                     }
-                    [self refreshTrack];
+//                    [self refreshTrack];
                 }];
             }
         }
         
     }];
      
-    
+	[self refreshTrack];
 
-    
+	
 //    [database insert:rowOfData completion:^(NSDictionary *insertedItem, NSError *error) {
 //        if (error) {
 //            NSLog(@"Error: %@", error);
@@ -335,9 +341,6 @@
             
             if (!(item == nil || [[item objectForKey:@"track_name"] isKindOfClass:[NSNull class]]))
             {
-                [_player stop];
-                [_player.queue removeAll];
-                [_player.queue add:item];
                 
                 [_rdio callAPIMethod:@"search" withParameters:@{@"query":[item objectForKey:@"track_name"],
                                                                 @"types":@"Track"}
@@ -349,14 +352,21 @@
                                  
                                  if ([[tempMutableArray filteredArrayUsingPredicate:predicate] count] > 0) {
                                      NSLog(@"Already playing song from other user.");
-                                     [timer invalidate];
+									 return;
+//                                     [timer invalidate];
                                  }
                                  else {
                                      for (NSDictionary * trackObject in tempMutableArray) {
                                          RdioTrack * track = [[RdioTrack alloc] initWithDict:trackObject];
                                          if ([track.trackKey isEqualToString:[item objectForKey:@"current_track"]] ) {
                                              NSLog(@"Updating track info From OtherUser...");
-                                             currentTrack = track;
+											 
+                                             currentTrack = [[RdioTrack alloc] initWithDict:trackObject];
+											 
+											 [_player stop];
+											 [_player.queue removeAll];
+											 [_player.queue add:@[track.trackKey]];
+											 
                                              [self viewDidAppear:YES];
                                          }
                                      }
