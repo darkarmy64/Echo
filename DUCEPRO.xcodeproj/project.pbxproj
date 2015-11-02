@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183C89C71BE78322001FEE36 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183C89C61BE78322001FEE36 /* CoreData.framework */; };
+		183C89CA1BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 183C89C81BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodeld */; };
+		183C89CF1BE787FD001FEE36 /* Favourites+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 183C89CC1BE787FD001FEE36 /* Favourites+CoreDataProperties.m */; };
+		183C89D01BE787FD001FEE36 /* Favourites.m in Sources */ = {isa = PBXBuildFile; fileRef = 183C89CE1BE787FD001FEE36 /* Favourites.m */; };
+		183C89D41BE79166001FEE36 /* FavouritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183C89D31BE79166001FEE36 /* FavouritesTableViewController.m */; };
 		1888C5CB1BE535F800C3E49F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1888C5CA1BE535F800C3E49F /* WindowsAzureMobileServices.framework */; };
 		1894E8431BE4FF2F00FCF89B /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1894E8421BE4FF2F00FCF89B /* SplashViewController.m */; };
 		18F5B3B21BE503F00046EDA8 /* DarkArmy.mov in Resources */ = {isa = PBXBuildFile; fileRef = 18F5B3B11BE503F00046EDA8 /* DarkArmy.mov */; };
-		59971A791BE5D38C00EFCA9E /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59971A781BE5D38C00EFCA9E /* SCSiriWaveformView.m */; settings = {ASSET_TAGS = (); }; };
+		59971A791BE5D38C00EFCA9E /* SCSiriWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59971A781BE5D38C00EFCA9E /* SCSiriWaveformView.m */; };
 		59A2F50F1BE45AC9008E026E /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2F50E1BE45AC9008E026E /* SearchTableViewCell.m */; };
 		59A2F5491BE4B327008E026E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5451BE4B327008E026E /* Fabric.framework */; };
 		59A2F54A1BE4B327008E026E /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A2F5461BE4B327008E026E /* TwitterKit.framework */; };
@@ -108,6 +113,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183C89C61BE78322001FEE36 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		183C89C91BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DUCEPRO_CoreData.xcdatamodel; sourceTree = "<group>"; };
+		183C89CB1BE787FD001FEE36 /* Favourites+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Favourites+CoreDataProperties.h"; sourceTree = "<group>"; };
+		183C89CC1BE787FD001FEE36 /* Favourites+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Favourites+CoreDataProperties.m"; sourceTree = "<group>"; };
+		183C89CD1BE787FD001FEE36 /* Favourites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favourites.h; sourceTree = "<group>"; };
+		183C89CE1BE787FD001FEE36 /* Favourites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favourites.m; sourceTree = "<group>"; };
+		183C89D21BE79166001FEE36 /* FavouritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesTableViewController.h; sourceTree = "<group>"; };
+		183C89D31BE79166001FEE36 /* FavouritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesTableViewController.m; sourceTree = "<group>"; };
 		1888C5CA1BE535F800C3E49F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		1894E8411BE4FF2F00FCF89B /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		1894E8421BE4FF2F00FCF89B /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
@@ -253,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183C89C71BE78322001FEE36 /* CoreData.framework in Frameworks */,
 				A3AFBAD41BE4CF4800BB9009 /* Social.framework in Frameworks */,
 				A3AFBAD21BE4CF3600BB9009 /* Accounts.framework in Frameworks */,
 				A3AFBAD01BE4CEDD00BB9009 /* libsqlite3.tbd in Frameworks */,
@@ -295,6 +309,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		183C89D51BE7916D001FEE36 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				183C89D21BE79166001FEE36 /* FavouritesTableViewController.h */,
+				183C89D31BE79166001FEE36 /* FavouritesTableViewController.m */,
+			);
+			name = Favourites;
+			sourceTree = "<group>";
+		};
 		595A73951BE3F7D400258408 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +337,7 @@
 				595A739A1BE3F82000258408 /* Search */,
 				595A73991BE3F81A00258408 /* Music Chat */,
 				59A2F5501BE4B3E9008E026E /* Twitter */,
+				183C89D51BE7916D001FEE36 /* Favourites */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -474,6 +498,11 @@
 				A3AFBADC1BE4E18800BB9009 /* MNCChatMessage.h */,
 				A3AFBADD1BE4E18800BB9009 /* MNCChatMessage.m */,
 				A300475B1BE286D600EE0A85 /* RdioTrack.h */,
+				183C89CB1BE787FD001FEE36 /* Favourites+CoreDataProperties.h */,
+				183C89CC1BE787FD001FEE36 /* Favourites+CoreDataProperties.m */,
+				183C89C81BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodeld */,
+				183C89CD1BE787FD001FEE36 /* Favourites.h */,
+				183C89CE1BE787FD001FEE36 /* Favourites.m */,
 				A300475C1BE286D600EE0A85 /* RdioTrack.m */,
 			);
 			name = Model;
@@ -617,6 +646,7 @@
 		A3B427161BE1311800102950 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				183C89C61BE78322001FEE36 /* CoreData.framework */,
 				A3AFBAD31BE4CF4800BB9009 /* Social.framework */,
 				A3AFBAD11BE4CF3600BB9009 /* Accounts.framework */,
 				A3AFBACF1BE4CEDD00BB9009 /* libsqlite3.tbd */,
@@ -823,12 +853,15 @@
 				A3B426EB1BE12BFC00102950 /* ViewController.m in Sources */,
 				59A2F55D1BE4B671008E026E /* SVRadialGradientLayer.m in Sources */,
 				59971A791BE5D38C00EFCA9E /* SCSiriWaveformView.m in Sources */,
+				183C89D01BE787FD001FEE36 /* Favourites.m in Sources */,
 				59A2F55A1BE4B671008E026E /* SVIndefiniteAnimatedView.m in Sources */,
+				183C89D41BE79166001FEE36 /* FavouritesTableViewController.m in Sources */,
 				A376649B1BE3A9B70044C962 /* UIImageView+WebCache.m in Sources */,
 				A33311D51BE3C3B200EA4A98 /* AFOAuth2Manager.m in Sources */,
 				A3EE4FE41BE2948D000AC203 /* MusicChatViewController.m in Sources */,
 				A30047591BE27D9D00EE0A85 /* SearchViewController.m in Sources */,
 				A300475D1BE286D600EE0A85 /* RdioTrack.m in Sources */,
+				183C89CF1BE787FD001FEE36 /* Favourites+CoreDataProperties.m in Sources */,
 				A33311DA1BE3C3B200EA4A98 /* AFURLSessionManager.m in Sources */,
 				A3B426E81BE12BFC00102950 /* AppDelegate.m in Sources */,
 				A376648E1BE3A9B70044C962 /* NSData+ImageContentType.m in Sources */,
@@ -840,6 +873,7 @@
 				A3B426E51BE12BFC00102950 /* main.m in Sources */,
 				A33311D41BE3C3B200EA4A98 /* AFNetworkReachabilityManager.m in Sources */,
 				59A2F55C1BE4B671008E026E /* SVProgressHUD.m in Sources */,
+				183C89CA1BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodeld in Sources */,
 				A3AFBAE11BE4E66300BB9009 /* MNCChatMessageCell.m in Sources */,
 				59A2F59A1BE521AF008E026E /* CurvedTextField.m in Sources */,
 				A33311D61BE3C3B200EA4A98 /* AFSecurityPolicy.m in Sources */,
@@ -1021,7 +1055,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Debug;
 		};
@@ -1056,7 +1090,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.appvaders.DUCEPRO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e4120f85-e77d-403c-b407-b1bcfac9437e";
+				PROVISIONING_PROFILE = "7dde0069-718c-4864-a318-ba4978ac9421";
 			};
 			name = Release;
 		};
@@ -1148,6 +1182,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		183C89C81BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				183C89C91BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodel */,
+			);
+			currentVersion = 183C89C91BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodel */;
+			path = DUCEPRO_CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A3B426D81BE12BFC00102950 /* Project object */;
 }

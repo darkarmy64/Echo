@@ -21,7 +21,8 @@
 #import "TwitterViewController.h"
 #import "MNCChatMessageCell.h"
 #import "MusicHeaderView.h"
-
+#import "Favourites+CoreDataProperties.h"
+#import "Favourites.h"
 
 @interface MusicChatViewController () <UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,RdioDelegate,RDPlayerDelegate,UITextFieldDelegate>
 {
@@ -54,6 +55,12 @@
 @end
 
 @implementation MusicChatViewController
+{
+    
+    NSManagedObjectContext *managedObjectContext;
+    NSFetchRequest *fetchRequest;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,7 +96,7 @@
 //     timer = [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(timerDidFire:) userInfo:nil repeats:YES];
 //    [timer fire];
 
-	
+    
 	
 }
 
@@ -199,6 +206,44 @@
 			[favArray addObject:currentTrack.trackKey];
 	}
 	[defaults setObject:favArray forKey:@"favourites"];
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Favourites"];
+    NSError *error = nil;
+    
+    NSArray *fetchedArray = [[Favourites managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    BOOL trackAlreadyThere = NO;
+    
+    for (int i=0; i<fetchedArray.count; i++)
+    {
+        RdioTrack *track = [fetchedArray objectAtIndex:i];
+        if ([track.trackKey isEqualToString:currentTrack.trackKey])
+        {
+            trackAlreadyThere = YES;
+            break;
+        }
+    }
+    
+    if (trackAlreadyThere == NO)
+    {
+        NSManagedObjectContext * context = [Favourites managedObjectContext];
+        
+        Favourites *favouritedTrack = [NSEntityDescription insertNewObjectForEntityForName:@"Favourites" inManagedObjectContext:context];
+        
+        favouritedTrack.trackKey = currentTrack.trackKey;
+        favouritedTrack.trackName = currentTrack.trackName;
+        favouritedTrack.trackUrl = currentTrack.trackName;
+        favouritedTrack.trackIcon = currentTrack.trackIcon;
+        favouritedTrack.trackArtist = currentTrack.trackArtist;
+        favouritedTrack.trackAlbum = currentTrack.trackAlbum;
+        
+        if (![context save:&error])
+        {
+            
+            NSLog(@"%@",error);
+            
+        }
+    }
+    
 	[self refreshTrack];
 }
 

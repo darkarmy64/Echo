@@ -14,6 +14,8 @@
 #import <Sinch/Sinch.h>
 #import "Config.h"
 #import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
+#import <CoreData/CoreData.h>
+
 
 #define SWidth [UIScreen mainScreen].bounds.size.width
 #define SHeight [UIScreen mainScreen].bounds.size.height
@@ -40,6 +42,13 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
 @property (strong, nonatomic) id<SINMessageClient> sinchMessageClient;
 - (void)sendTextMessage:(NSString *)messageText toRecipient:(NSString *)recipientId;
 @property (strong, nonatomic) MSClient *client;
+
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
+- (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
 
 @end
 

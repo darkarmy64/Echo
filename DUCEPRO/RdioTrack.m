@@ -19,6 +19,7 @@
         self.trackIcon = [dict objectForKey:@"icon400"];
         self.trackKey = [dict objectForKey:@"key"];
         self.trackArtist = [dict objectForKey:@"artist"];
+        self.trackUrl = [dict objectForKey:@"url"];
     }
     return self;
 }

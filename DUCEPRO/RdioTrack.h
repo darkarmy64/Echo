@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *trackArtist;
 @property (nonatomic, strong) NSString *trackIcon;
 @property (nonatomic, strong) NSString *trackKey;
+@property (nonatomic, strong) NSString *trackUrl;
 
 @property(nonatomic,strong) NSDictionary *mainDictionary;
 
