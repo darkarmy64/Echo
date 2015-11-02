@@ -18,7 +18,7 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] CGColor]);
-	CGContextSetLineWidth(context, 0.5);
+	CGContextSetLineWidth(context, 0.7);
 	CGContextMoveToPoint(context, self.trackNameLabel.frame.origin.x, HEIGHT);
 	CGContextAddLineToPoint(context, WIDTH, HEIGHT);
 	CGContextSetShadow(context, CGSizeZero, 1.2f);

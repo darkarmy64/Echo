@@ -79,7 +79,8 @@
 								   {
 									   [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
 										   [self dismissViewControllerAnimated:YES completion:^{
-											   
+											   UIViewController *initVC = [self.storyboard instantiateInitialViewController];
+											   [self presentViewController:initVC animated:YES completion:nil];
 										   }];
 									   }];
 									   

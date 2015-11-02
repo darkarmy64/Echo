@@ -179,6 +179,8 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	[_player stop];
+	[_player.queue removeAll];
 	RdioTrack *thisTrack = [favouritesArray objectAtIndex:indexPath.row];
 	currentTrack = thisTrack;
 	[self updatePlayer];

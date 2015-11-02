@@ -502,6 +502,8 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *chatMessageArray, NSError *error) {
         if (!error) {
             // Store all retrieve messages into messageArray
+			
+			NSMutableArray *newMessageArray = [[NSMutableArray alloc] init];
             for (int i = 0; i < [chatMessageArray count]; i++) {
                 MNCChatMessage *chatMessage = [[MNCChatMessage alloc] init];
                 
@@ -510,9 +512,13 @@
                 [chatMessage setRecipientIds:[NSArray arrayWithObject:chatMessageArray[i][@"recipientId"]]];
                 [chatMessage setText:chatMessageArray[i][@"text"]];
                 [chatMessage setTimestamp:chatMessageArray[i][@"timestamp"]];
-                
-                [weakSelf.messageArray addObject:chatMessage];
+				
+				[newMessageArray addObject:chatMessage];
+//                [weakSelf.messageArray addObject:chatMessage];
             }
+			
+			weakSelf.messageArray = [NSMutableArray arrayWithArray:newMessageArray];
+			
             [weakSelf.myTableView reloadData];  // Refresh the table view
             [weakSelf scrollTableToBottom];  // Scroll to the bottom of the table view
             [self refreshTrack];
