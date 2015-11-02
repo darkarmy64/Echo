@@ -16,6 +16,7 @@
 #define IS_ZOOMED_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0 && IS_OS_8_OR_LATER && [UIScreen mainScreen].nativeScale < [UIScreen mainScreen].scale)
 
 #import "SplashViewController.h"
+#import "MNCChatMateListViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface SplashViewController ()
@@ -78,19 +79,18 @@
 
 -(void)playbackFinished
 {
-    
-    [self performSegueWithIdentifier:@"LoginPage" sender:self];       // segue into first view (still to be decided)
+	if ([PFUser currentUser]) {
+		PFUser *user = [PFUser currentUser];
+		NSLog(@"Logged in as : %@", user.username);
+		UINavigationController *navc = [self.storyboard instantiateViewControllerWithIdentifier:@"chatMateNav"];
+		MNCChatMateListViewController *destViewController = [navc.viewControllers firstObject];
+		destViewController.myUserId = [PFUser currentUser].username;
+		[self presentViewController:navc animated:YES completion:nil];
+	}
+	else
+		[self performSegueWithIdentifier:@"LoginPage" sender:self];       // segue into first view (still to be decided)
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

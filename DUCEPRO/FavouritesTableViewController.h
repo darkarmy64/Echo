@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RdioTrack.h"
+#import <Rdio/Rdio.h>
+#import "AppDelegate.h"
 
 @interface FavouritesTableViewController : UITableViewController
 

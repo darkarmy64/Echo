@@ -122,6 +122,8 @@
 				musicHeaderView.albumCoverImageView.image = image;
 				[self scrollTableToBottom];
 				[self.scrollView scrollRectToVisible:CGRectMake(0, self.scrollView.frame.size.height - 44, SWidth, 44) animated:YES];
+				
+				shouldRefersh = YES;
 			});
 		});
 		[musicHeaderView setPlaying:NO];
@@ -207,10 +209,12 @@
 	}
 	[defaults setObject:favArray forKey:@"favourites"];
     
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Favourites"];
+    NSFetchRequest *fetchRequestx = [NSFetchRequest fetchRequestWithEntityName:@"Favourites"];
     NSError *error = nil;
-    
-    NSArray *fetchedArray = [[Favourites managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+	
+	NSManagedObjectContext * context = [Favourites managedObjectContext];
+	
+    NSArray *fetchedArray = [context executeFetchRequest:fetchRequestx error:&error];
     BOOL trackAlreadyThere = NO;
     
     for (int i=0; i<fetchedArray.count; i++)
@@ -219,14 +223,14 @@
         if ([track.trackKey isEqualToString:currentTrack.trackKey])
         {
             trackAlreadyThere = YES;
+			[context deleteObject:(NSManagedObject *)track];
             break;
         }
     }
     
     if (trackAlreadyThere == NO)
-    {
-        NSManagedObjectContext * context = [Favourites managedObjectContext];
-        
+	{
+		
         Favourites *favouritedTrack = [NSEntityDescription insertNewObjectForEntityForName:@"Favourites" inManagedObjectContext:context];
         
         favouritedTrack.trackKey = currentTrack.trackKey;
@@ -235,15 +239,16 @@
         favouritedTrack.trackIcon = currentTrack.trackIcon;
         favouritedTrack.trackArtist = currentTrack.trackArtist;
         favouritedTrack.trackAlbum = currentTrack.trackAlbum;
-        
-        if (![context save:&error])
-        {
-            
-            NSLog(@"%@",error);
-            
-        }
+		
     }
-    
+	
+	if (![context save:&error])
+	{
+		
+		NSLog(@"%@",error);
+		
+	}
+	
 	[self refreshTrack];
 }
 
@@ -408,12 +413,14 @@
         if(error) { // error is nil if no error occured
             NSLog(@"ERROR %@", error);
         } else {
+			
             NSDictionary *item = [result.items lastObject];
             NSLog(@"Refreshing item: %@\n%@\n%@\n%@", [item objectForKey:@"recipient_id"], [item objectForKey:@"sender_id"], [item objectForKey:@"current_track"], [item objectForKey:@"track_name"]);
             
             if (!(item == nil || [[item objectForKey:@"track_name"] isKindOfClass:[NSNull class]]))
             {
-//				shouldRefersh = NO;
+				shouldRefersh = NO;
+				
                 [_rdio callAPIMethod:@"search" withParameters:@{@"query":[item objectForKey:@"track_name"],
                                                                 @"types":@"Track"}
                              success:^(NSDictionary *resultx) {
@@ -424,8 +431,8 @@
                                  
                                  if ([[tempMutableArray filteredArrayUsingPredicate:predicate] count] > 0) {
                                      NSLog(@"Already playing song from other user.");
+									 shouldRefersh = YES;
 									 return;
-//                                     [timer invalidate];
                                  }
                                  else {
                                      for (NSDictionary * trackObject in tempMutableArray) {
@@ -727,6 +734,7 @@
     // Re-initialize the player on login changes
     _player = [_rdio preparePlayerWithDelegate:self];
 }
+
 
 
 #pragma mark - RdioDelegate

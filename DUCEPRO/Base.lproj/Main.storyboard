@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WGb-Xy-X6N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WGb-Xy-X6N">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -399,6 +399,12 @@
                                 <action selector="logoutAction:" destination="nSU-ca-AF0" id="K11-5Q-xW3"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Favourites" id="Si0-Gi-OmT">
+                            <color key="tintColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="svk-9b-xkf" kind="presentation" id="MOt-35-zFY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="mUy-pO-XL4" kind="show" identifier="OpenDialogSegue" id="XdC-z6-o7n"/>
@@ -660,39 +666,61 @@
         <scene sceneID="FG4-Rc-dpl">
             <objects>
                 <tableViewController title="Favourites" id="Xty-UH-VZu" customClass="FavouritesTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bsV-W5-B2D">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bsV-W5-B2D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.2274509804" green="0.31372549020000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Nrc-LQ-p9s" detailTextLabel="47F-2d-XH2" style="IBUITableViewCellStyleSubtitle" id="8CC-Jy-EGh">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favCell" rowHeight="60" id="CX5-Js-DvF" customClass="SearchTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8CC-Jy-EGh" id="D83-qU-Zy4">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CX5-Js-DvF" id="BgX-oA-KYE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nrc-LQ-p9s">
-                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6go-ZB-FNl">
+                                            <rect key="frame" x="12" y="0.0" width="60" height="60"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="6go-ZB-FNl" secondAttribute="height" multiplier="1:1" id="2ZF-11-fEa"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="IY4-FB-mMr">
+                                            <rect key="frame" x="80" y="8" width="287" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="47F-2d-XH2">
-                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="z8d-U3-w6y">
+                                            <rect key="frame" x="80" y="34" width="287" height="18"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="6go-ZB-FNl" firstAttribute="leading" secondItem="BgX-oA-KYE" secondAttribute="leadingMargin" constant="4" id="AAL-bK-8yJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="z8d-U3-w6y" secondAttribute="bottom" id="DI1-3S-yCY"/>
+                                        <constraint firstItem="IY4-FB-mMr" firstAttribute="leading" secondItem="6go-ZB-FNl" secondAttribute="trailing" constant="8" id="MUi-dN-Vad"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6go-ZB-FNl" secondAttribute="bottom" constant="-8" id="US4-jI-Qy7"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="z8d-U3-w6y" secondAttribute="trailing" id="Zkc-wc-qMu"/>
+                                        <constraint firstItem="6go-ZB-FNl" firstAttribute="top" secondItem="BgX-oA-KYE" secondAttribute="topMargin" constant="-8" id="bzr-gI-v6D"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="IY4-FB-mMr" secondAttribute="trailing" id="kNa-qq-TV6"/>
+                                        <constraint firstItem="z8d-U3-w6y" firstAttribute="leading" secondItem="6go-ZB-FNl" secondAttribute="trailing" constant="8" id="nuI-yM-AEH"/>
+                                        <constraint firstAttribute="topMargin" secondItem="IY4-FB-mMr" secondAttribute="top" id="xs7-Uz-vVw"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.31372549020000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="trackAlbumLabel" destination="z8d-U3-w6y" id="sM1-Cz-4FZ"/>
+                                    <outlet property="trackCoverImageView" destination="6go-ZB-FNl" id="N5M-eY-DOS"/>
+                                    <outlet property="trackNameLabel" destination="IY4-FB-mMr" id="oAU-hN-G4l"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -700,11 +728,18 @@
                             <outlet property="delegate" destination="Xty-UH-VZu" id="SE9-bL-Glf"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Favourites" id="C6O-2c-67u">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="xSd-nD-qQp">
+                            <connections>
+                                <action selector="dismissVC:" destination="Xty-UH-VZu" id="DJ9-9D-9ry"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbp-iP-RbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-70" y="460"/>
+            <point key="canvasLocation" x="2801.5" y="-1047.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UGW-8v-WKA">
@@ -909,7 +944,7 @@
         <!--Navigation Controller-->
         <scene sceneID="88p-c1-m4c">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GJB-vJ-1LZ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="chatMateNav" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GJB-vJ-1LZ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="94X-08-GgF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -944,6 +979,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QGT-16-oSU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="965" y="354"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kld-hG-lcX">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="svk-9b-xkf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Yo-UP-5io">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.2274509804" green="0.31372549020000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.2274509804" green="0.31372549020000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <color key="textColor" red="0.98823529409999999" green="0.97647058819999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xty-UH-VZu" kind="relationship" relationship="rootViewController" id="DdM-8f-Aw8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z2T-aI-5s8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2287" y="-1047"/>
         </scene>
     </scenes>
     <resources>

@@ -45,6 +45,8 @@ static Rdio * _rdioInstance;
     self.client = [MSClient clientWithApplicationURLString:@"https://echo.azure-mobile.net/"
                                             applicationKey:@"TpNuzgZVBTGbDXgbraqvNwbMpaACob38"];
 	
+	[Parse enableLocalDatastore];
+	
     [Parse setApplicationId:PARSE_APPLICATION_ID clientKey:PARSE_CLIENT_KEY];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
@@ -63,7 +65,7 @@ static Rdio * _rdioInstance;
 	[SVProgressHUD setForegroundColor:GLOBAL_TINT_COLOR];
 	[SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
 	
-	[[UINavigationBar appearance] setBarStyle:UIStatusBarStyleLightContent];
+	[[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
 	
     return YES;
 }

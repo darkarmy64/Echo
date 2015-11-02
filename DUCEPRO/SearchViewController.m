@@ -42,6 +42,10 @@
 	[_trackSearchBar setKeyboardAppearance:UIKeyboardAppearanceDark];
 //	[_trackSearchBar setShowsCancelButton:YES];
 	
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:@"SearchText"])
+		_trackSearchBar.text = [[NSUserDefaults standardUserDefaults] valueForKey:@"SearchText"];
+		
+	
 	[self.navigationItem setTitleView:_trackSearchBar];
 
 	UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissVC)];
@@ -165,6 +169,8 @@
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+	
+	[[NSUserDefaults standardUserDefaults] setValue:searchBar.text forKey:@"SearchText"];
 	
 	[SVProgressHUD showWithStatus:@"Searching..."];
 	
