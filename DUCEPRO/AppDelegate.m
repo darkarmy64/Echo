@@ -27,8 +27,8 @@ static Rdio * _rdioInstance;
 + (Rdio *)sharedRdio
 {
     if (_rdioInstance == nil) {
-        _rdioInstance = [[Rdio alloc] initWithClientId:@"evmv6322brdixbus35sty7f6ya"
-                                             andSecret:@"9CRVzbGmpu2q5GEZv9qGhw"
+        _rdioInstance = [[Rdio alloc] initWithClientId:@""
+                                             andSecret:@""
                                               delegate:nil];
     }
     return _rdioInstance;
@@ -43,7 +43,7 @@ static Rdio * _rdioInstance;
 //    Rdio *r = [AppDelegate sharedRdio];
     
     self.client = [MSClient clientWithApplicationURLString:@"https://echo.azure-mobile.net/"
-                                            applicationKey:@"TpNuzgZVBTGbDXgbraqvNwbMpaACob38"];
+                                            applicationKey:@""];
 	
 	[Parse enableLocalDatastore];
 	

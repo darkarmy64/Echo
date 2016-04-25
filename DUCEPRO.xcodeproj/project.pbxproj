@@ -493,12 +493,12 @@
 				A3AFBADC1BE4E18800BB9009 /* MNCChatMessage.h */,
 				A3AFBADD1BE4E18800BB9009 /* MNCChatMessage.m */,
 				A300475B1BE286D600EE0A85 /* RdioTrack.h */,
+				A300475C1BE286D600EE0A85 /* RdioTrack.m */,
 				183C89CB1BE787FD001FEE36 /* Favourites+CoreDataProperties.h */,
 				183C89CC1BE787FD001FEE36 /* Favourites+CoreDataProperties.m */,
 				183C89C81BE78444001FEE36 /* DUCEPRO_CoreData.xcdatamodeld */,
 				183C89CD1BE787FD001FEE36 /* Favourites.h */,
 				183C89CE1BE787FD001FEE36 /* Favourites.m */,
-				A300475C1BE286D600EE0A85 /* RdioTrack.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
